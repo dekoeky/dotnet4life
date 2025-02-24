@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "Api+Client",
+    "Projects": [
+      {
+        "Path": "WorkerService1\\WorkerService1.csproj",
+        "Action": "Start",
+        "DebugTarget": "WorkerService1"
+      },
+      {
+        "Path": "ASP.NET\\WebApplication1\\WebApplication1.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
