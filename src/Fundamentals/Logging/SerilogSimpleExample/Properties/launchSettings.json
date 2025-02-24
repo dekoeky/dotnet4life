@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SerilogSimpleExample": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

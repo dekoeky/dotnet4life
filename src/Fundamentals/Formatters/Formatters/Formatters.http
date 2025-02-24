@@ -1,0 +1,40 @@
+@Formatters_HostAddress = http://localhost:5075
+
+# application/json Weather
+GET {{Formatters_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+# text/json Weather
+GET {{Formatters_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+# text/xml Weather
+GET {{Formatters_HostAddress}}/weatherforecast/
+Accept: text/xml
+
+###
+
+# application/xml Weather
+GET {{Formatters_HostAddress}}/weatherforecast/
+Accept: application/xml
+
+###
+
+
+# text/plain Weather
+GET {{Formatters_HostAddress}}/weatherforecast/
+Accept: text/plain
+
+###
+
+
+# text/csv Weather
+GET {{Formatters_HostAddress}}/weatherforecast/
+Accept: text/csv
+
+###
+
