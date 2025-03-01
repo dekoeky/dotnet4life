@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>31d1f45d-bb31-4497-b1df-149badd4b0ee</UserSecretsId>
+    
+    <!-- ###################################################################################### -->
+    <!-- See link below for Container Tools Build Properties (Docker) -->
+    <!-- https://learn.microsoft.com/en-us/visualstudio/containers/container-msbuild-properties -->
+    <!-- ###################################################################################### -->
+    
+    <!-- By setting to regular, the build might take a bit longer. But the result will be more reflective of the final result -->
+    <ContainerDevelopmentMode>Fast</ContainerDevelopmentMode>
+    <!--<ContainerDevelopmentMode>Regular</ContainerDevelopmentMode>-->
+
+    <!-- .. (two dots) means: Use the folder, that is the parent to the folder that houses this .csproj file -->
+    <DockerfileContext>..</DockerfileContext>
+    
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.2" />
+  </ItemGroup>
+
+</Project>

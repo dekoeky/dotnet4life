@@ -1,0 +1,24 @@
+@WebApplication1_HostAddress = http://localhost:5080
+
+# Get the Weather Forecast from the app
+GET {{WebApplication1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+
+# Call the 'live' health endpoint
+GET {{WebApplication1_HostAddress}}/health/live
+###
+
+# Call the 'ready' health endpoint
+GET {{WebApplication1_HostAddress}}/health/ready
+###
+
+# Call the health endpoint, that contains all health checks
+GET {{WebApplication1_HostAddress}}/health/all
+###
+
+# Call the health endpoint, that explains (in Json) what the result is of all health checks
+GET {{WebApplication1_HostAddress}}/health/explain
+###
