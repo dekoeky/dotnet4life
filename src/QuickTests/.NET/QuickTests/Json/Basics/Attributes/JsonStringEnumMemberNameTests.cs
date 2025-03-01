@@ -32,6 +32,8 @@ public class JsonStringEnumMemberNameTests
 
 
     [JsonConverter(typeof(JsonStringEnumConverter))]
+    //OR
+    //[JsonConverter(typeof(JsonStringEnumConverter<IoType>))]
     public enum IoType
     {
         [JsonStringEnumMemberName("di")]
