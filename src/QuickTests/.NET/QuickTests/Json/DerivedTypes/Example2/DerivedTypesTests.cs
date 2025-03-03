@@ -1,7 +1,7 @@
 using QuickTests.Json.DerivedTypes.Example2.Models;
 using System.Text.Json;
 
-namespace QuickTests.Json.Poly;
+namespace QuickTests.Json.DerivedTypes.Example2;
 
 /// <summary>
 /// <see href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/polymorphism"/>
