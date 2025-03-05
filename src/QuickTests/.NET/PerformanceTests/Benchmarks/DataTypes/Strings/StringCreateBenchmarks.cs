@@ -3,9 +3,10 @@
 namespace PerformanceTests.Benchmarks.DataTypes.Strings;
 
 [MemoryDiagnoser]
-public class CreateStringBenchmarks
+public class StringCreateBenchmarks
 {
     private string s;
+
     [Benchmark]
     public string Regular()
     {

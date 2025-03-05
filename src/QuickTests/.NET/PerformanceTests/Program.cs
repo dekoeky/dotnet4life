@@ -1,6 +1,4 @@
 ﻿using BenchmarkDotNet.Running;
-using PerformanceTests.Benchmarks.DataTypes.Strings;
+using System.Reflection;
 
-//var summary = BenchmarkRunner.Run<JsonSerializeBenchmarks>();
-//var summary = BenchmarkRunner.Run<JsonDeSerializeBenchmarks>();
-var summary = BenchmarkRunner.Run<CreateStringBenchmarks>();
+var summary = new BenchmarkSwitcher(Assembly.GetExecutingAssembly()).Run(args);
