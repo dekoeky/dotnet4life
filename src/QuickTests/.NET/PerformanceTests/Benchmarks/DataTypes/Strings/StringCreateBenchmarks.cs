@@ -5,20 +5,20 @@ namespace PerformanceTests.Benchmarks.DataTypes.Strings;
 [MemoryDiagnoser]
 public class StringCreateBenchmarks
 {
-    private string s;
+    private string _s = string.Empty;
 
     [Benchmark]
     public string Regular()
     {
-        s = "Hello";
-        return s;
+        _s = "Hello";
+        return _s;
     }
 
     [Benchmark]
     public string CharArrayToString()
     {
-        s = new string(['H', 'e', 'l', 'l', 'o']);
-        return s;
+        _s = new string(['H', 'e', 'l', 'l', 'o']);
+        return _s;
     }
 
     private readonly char[] _preCreatedCharArray = new char[5];
@@ -31,7 +31,7 @@ public class StringCreateBenchmarks
         _preCreatedCharArray[2] = 'l';
         _preCreatedCharArray[3] = 'l';
         _preCreatedCharArray[4] = 'o';
-        s = new string(_preCreatedCharArray);
-        return s;
+        _s = new string(_preCreatedCharArray);
+        return _s;
     }
 }
