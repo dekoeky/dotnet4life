@@ -10,7 +10,10 @@ public class ReflectionTests
     [DataRow(typeof(Poco))]
     public void PrintProperties(Type type)
     {
+        //Arrange
         using var itw = new IndentedTextWriter(Console.Out);
+
+        //Act
         foreach (var propertyInfo in type.GetProperties())
             PrintProperty(itw, propertyInfo);
     }
@@ -36,7 +39,7 @@ public class ReflectionTests
         public int Int { get; set; }
         public int? ExplicitNullableInt { get; set; }
 
-        public string String { get; set; }
+        public string? String { get; set; }
 
         public string? NullableString { get; set; }
     }

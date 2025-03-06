@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace PerformanceTests.Benchmarks;
+namespace PerformanceTests.Benchmarks.Enums;
 
 [ShortRunJob]
 //[SimpleJob]

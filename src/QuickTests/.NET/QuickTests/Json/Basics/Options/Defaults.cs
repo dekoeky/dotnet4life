@@ -37,27 +37,19 @@ public class Defaults
     [TestMethod]
     public void TryGetTypeInfo()
     {
-        JsonSerializerOptions[] xxx =
+        JsonSerializerOptions[] optionsToBeTested =
         [
             JsonSerializerOptions.Default,
             new(),
             new(JsonSerializerOptions.Default),
             new() { TypeInfoResolver = new DefaultJsonTypeInfoResolver() }
         ];
+        var t = typeof(WeatherForecast);
 
-        foreach (var item in xxx)
-        {
-            var success = item.TryGetTypeInfo(typeof(WeatherForecast), out var jti);
-            if (success)
-            {
-                var kind = jti.Kind;
-                var p = jti.Properties.Count;
-                Console.WriteLine($"{kind}: {p}");
-            }
+        foreach (var options in optionsToBeTested)
+            if (options.TryGetTypeInfo(t, out _))
+                Console.WriteLine($"successfully retrieved TypeInfo for {t}");
             else
-            {
-                Console.WriteLine("failed");
-            }
-        }
+                Console.WriteLine($"failed to retrieve TypeInfo for {t}");
     }
 }

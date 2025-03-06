@@ -6,7 +6,6 @@ public class EndiannessTests
     [TestMethod]
     public void IsLittleEndian()
     {
-
         //Act
         var isLittleEndian = BitConverter.IsLittleEndian;
 
