@@ -40,5 +40,4 @@ public class EnumFlagCheck
         [Status.BUSY | Status.CLIMATE_WARNING, Status.BUSY, true ],
         [Status.BUSY | Status.CLIMATE_WARNING, Status.CLIMATE_WARNING, true ],
     ];
-
 }

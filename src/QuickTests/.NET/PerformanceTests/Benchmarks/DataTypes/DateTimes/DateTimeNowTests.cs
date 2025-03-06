@@ -1,7 +1,8 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace PerformanceTests.Benchmarks;
+namespace PerformanceTests.Benchmarks.DataTypes.DateTimes;
 
+[MemoryDiagnoser]
 public class DateTimeNowTests
 {
     [Benchmark]
