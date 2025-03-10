@@ -1,11 +1,24 @@
 ﻿using BenchmarkDotNet.Attributes;
+using System.Text;
 
-namespace PerformanceTests.Benchmarks.DataTypes.Strings;
+namespace PerformanceTests.Benchmarks.DataTypes.Strings.Formatting;
 
 [MemoryDiagnoser]
-public class StringFormattingBenchmarks
+public class SimpleStringFormattingBenchmarks
 {
     private readonly Parameters _parameters = new();
+
+    [Benchmark]
+    public string StringConcatenation() => _parameters.RendererName + " on " + _parameters.ObjectName + "\n";
+
+
+    [Benchmark]
+    public string StringBuilder() => new StringBuilder()
+        .Append(_parameters.RendererName)
+        .Append(" on ")
+        .Append(_parameters.ObjectName)
+        .Append('\n')
+        .ToString();
 
     [Benchmark]
     // ReSharper disable once UseStringInterpolation
