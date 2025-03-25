@@ -24,6 +24,7 @@ internal static class HealthChecks
         hc.AddInitializationCheck();
 
         //Two checks that ping the google DNS services, for example for internet connectivity
+        //Requires PING to be installed (see dockerfile)
         hc.AddPingCheck("GooglePrimaryDns", "8.8.8.8", HealthStatus.Unhealthy, [Tags.Ready]);
         hc.AddPingCheck("GoogleSecondaryDns", "8.8.4.4", HealthStatus.Unhealthy, [Tags.Ready]);
 

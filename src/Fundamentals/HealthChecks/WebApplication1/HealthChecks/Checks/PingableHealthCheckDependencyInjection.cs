@@ -4,6 +4,10 @@ namespace WebApplication1.HealthChecks.Checks;
 
 internal static class PingableHealthCheckDependencyInjection
 {
+    /// <summary>
+    /// Registers a <see cref="PingableHealthCheck"/>.
+    /// </summary>
+    /// <remarks>Requires PING to be installed (see dockerfile)</remarks>
     public static void AddPingCheck(this IHealthChecksBuilder builder,
           string name,
           string hostnameOrAddress,
