@@ -5,7 +5,7 @@ using WebApplication1.HealthChecks.Checks;
 
 namespace WebApplication1.Configuration;
 
-static class HealthChecks
+internal static class HealthChecks
 {
     /// <summary>
     /// Registers the required HealthChecks for this application.
@@ -38,14 +38,14 @@ static class HealthChecks
     public static void MapApplicationHealthChecks(this WebApplication app)
     {
         //HealthCheck Endpoint that indicates whether the application is live (is the application running?)
-        app.MapHealthChecks("health/live", new HealthCheckOptions
+        app.MapHealthChecks(Endpoints.Ready, new HealthCheckOptions
         {
             Predicate = hc => hc.Tags.Contains(Tags.Live),
             ResponseWriter = ResponseWriters.WriteLivePlaintext,
         });
 
         //HealthCheck Endpoint that indicates whether the application is ready to process requests
-        app.MapHealthChecks("health/ready", new HealthCheckOptions
+        app.MapHealthChecks(Endpoints.Ready, new HealthCheckOptions
         {
             Predicate = hc => hc.Tags.Contains(Tags.Ready),
             ResponseWriter = ResponseWriters.WriteReadyPlaintext,
@@ -55,10 +55,10 @@ static class HealthChecks
         // -- The stuff below is more for illustration purposes.
 
         //HealthCheck Endpoint that includes ALL Health Checks (with default ResponseWriter, and other options)
-        app.MapHealthChecks(WebApplication1.HealthChecks.Endpoints.All);
+        app.MapHealthChecks(Endpoints.All);
 
         //HealthCheck Endpoint that will 'explain' the HealthCheck result, by printing each entry as json
-        app.MapHealthChecks(WebApplication1.HealthChecks.Endpoints.ExplainJson, new HealthCheckOptions
+        app.MapHealthChecks(Endpoints.ExplainJson, new HealthCheckOptions
         {
             //Predicate = //Default (all)
             ResponseWriter = ResponseWriters.WriteJson,

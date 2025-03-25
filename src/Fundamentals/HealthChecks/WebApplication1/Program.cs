@@ -1,5 +1,5 @@
 using WebApplication1.Configuration;
-using WebApplication1.Endpoints;
+using WebApplication1.MinimalApis;
 
 var builder = WebApplication.CreateBuilder(args);
 
