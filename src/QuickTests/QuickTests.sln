@@ -5,67 +5,67 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET", ".NET", "{79120BB5-7395-B9EE-4BB5-58082D0F308B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceTests", ".NET\PerformanceTests\PerformanceTests.csproj", "{EF542AFC-6471-413F-A26C-5C74B8905463}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceTests", "dotnet\PerformanceTests\PerformanceTests.csproj", "{EF542AFC-6471-413F-A26C-5C74B8905463}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickTests", ".NET\QuickTests\QuickTests.csproj", "{5DFB4AC0-8E57-406D-950D-FFD061A2B94A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickTests", "dotnet\QuickTests\QuickTests.csproj", "{5DFB4AC0-8E57-406D-950D-FFD061A2B94A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestFrameworks", "TestFrameworks", "{0CFDDB76-15D0-ED74-C519-CB40756F4FEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSTest", "MSTest", "{A9ACD776-FBC3-9E8A-AE12-D5DE48BA50D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTest.Tests", ".NET\TestFrameworks\MSTest\MSTest.Tests.csproj", "{D55CED6D-9307-49D8-AA9F-7C8FF4F49AD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTest.Tests", "dotnet\TestFrameworks\MSTest\MSTest.Tests.csproj", "{D55CED6D-9307-49D8-AA9F-7C8FF4F49AD5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NUnit", "NUnit", "{5A4CAB77-DBE5-F184-8C2C-AA5D37109CD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit.Tests", ".NET\TestFrameworks\NUnit\NUnit.Tests.csproj", "{D0FDBDC1-6EB8-434D-91E5-342C89B097DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit.Tests", "dotnet\TestFrameworks\NUnit\NUnit.Tests.csproj", "{D0FDBDC1-6EB8-434D-91E5-342C89B097DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xUnit", "xUnit", "{D8F5493C-230E-467D-B870-3C200DF2E506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnit.Tests", ".NET\TestFrameworks\xUnit\xUnit.Tests.csproj", "{81C59B4B-ED5E-4CAC-9562-75F144102BEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnit.Tests", "dotnet\TestFrameworks\xUnit\xUnit.Tests.csproj", "{81C59B4B-ED5E-4CAC-9562-75F144102BEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService", ".NET\WorkerService\WorkerService.csproj", "{07A88D9D-BCAE-4F60-B4C4-97B1347CED6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService", "dotnet\WorkerService\WorkerService.csproj", "{07A88D9D-BCAE-4F60-B4C4-97B1347CED6A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET Aspire", ".NET Aspire", "{843CED1E-8DD2-447D-72FE-5F28E27DF372}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspireApp1", "AspireApp1", "{41DFBE03-754A-F08A-9FF0-D0AAD205D30A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.ApiService", ".NET Aspire\AspireApp1\AspireApp1.ApiService\AspireApp1.ApiService.csproj", "{550D6E40-C835-40A4-81B3-C4A5FB4FEDE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.ApiService", "dotnet aspire\AspireApp1\AspireApp1.ApiService\AspireApp1.ApiService.csproj", "{550D6E40-C835-40A4-81B3-C4A5FB4FEDE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.AppHost", ".NET Aspire\AspireApp1\AspireApp1.AppHost\AspireApp1.AppHost.csproj", "{A83C4ECB-2C6A-44E1-BED8-3E211EC8A213}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.AppHost", "dotnet aspire\AspireApp1\AspireApp1.AppHost\AspireApp1.AppHost.csproj", "{A83C4ECB-2C6A-44E1-BED8-3E211EC8A213}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.ServiceDefaults", ".NET Aspire\AspireApp1\AspireApp1.ServiceDefaults\AspireApp1.ServiceDefaults.csproj", "{C03EF85A-C90C-4DAF-8C9E-3620D2FBA2C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.ServiceDefaults", "dotnet aspire\AspireApp1\AspireApp1.ServiceDefaults\AspireApp1.ServiceDefaults.csproj", "{C03EF85A-C90C-4DAF-8C9E-3620D2FBA2C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.Web", ".NET Aspire\AspireApp1\AspireApp1.Web\AspireApp1.Web.csproj", "{B58DB86A-573A-49B1-B3E5-72BE9C8AACF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.Web", "dotnet aspire\AspireApp1\AspireApp1.Web\AspireApp1.Web.csproj", "{B58DB86A-573A-49B1-B3E5-72BE9C8AACF7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET Framework", ".NET Framework", "{B4A9BFDE-7810-C33C-7550-EC64BC8C8394}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", ".NET Framework\ClassLibrary\ClassLibrary.csproj", "{C0FDBDAA-EDE0-4E64-B043-5B8884C32655}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "dotnet framework\ClassLibrary\ClassLibrary.csproj", "{C0FDBDAA-EDE0-4E64-B043-5B8884C32655}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", ".NET Framework\ConsoleApp\ConsoleApp.csproj", "{2B088247-F274-44CF-BDFD-C23752AB50A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "dotnet framework\ConsoleApp\ConsoleApp.csproj", "{2B088247-F274-44CF-BDFD-C23752AB50A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTest", ".NET Framework\MSTest\MSTest.csproj", "{B6DF9908-3B9B-4A2B-A7FE-E778E27D0EC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTest", "dotnet framework\MSTest\MSTest.csproj", "{B6DF9908-3B9B-4A2B-A7FE-E778E27D0EC8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET Standard", ".NET Standard", "{848119A6-A27F-DCB0-1D39-194CFC436360}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryNetStandard20", ".NET Standard\ClassLibraryNetStandard20\ClassLibraryNetStandard20.csproj", "{FA7C5DDD-B321-4BF1-878E-B7DEDA77AC18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryNetStandard20", "dotnet standard\ClassLibraryNetStandard20\ClassLibraryNetStandard20.csproj", "{FA7C5DDD-B321-4BF1-878E-B7DEDA77AC18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryNetStandard21", ".NET Standard\ClassLibraryNetStandard21\ClassLibraryNetStandard21.csproj", "{E7FC703D-15BA-4F49-9699-DAB410714AF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryNetStandard21", "dotnet standard\ClassLibraryNetStandard21\ClassLibraryNetStandard21.csproj", "{E7FC703D-15BA-4F49-9699-DAB410714AF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests .NET", ".NET Standard\Tests .NET\Tests .NET.csproj", "{861BCD70-DE32-4BD3-9D79-00796A7E580E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests .NET", "dotnet standard\Tests .NET\Tests .NET.csproj", "{861BCD70-DE32-4BD3-9D79-00796A7E580E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests .NET Framework", ".NET Standard\Tests .NET Framework\Tests .NET Framework.csproj", "{E77C4F83-6C02-4BD8-8FFD-25F5135C6272}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests .NET Framework", "dotnet standard\Tests .NET Framework\Tests .NET Framework.csproj", "{E77C4F83-6C02-4BD8-8FFD-25F5135C6272}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET", "ASP.NET", "{F80952A4-3F86-4525-D661-DB6A21184A74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "ASP.NET\WebApplication1\WebApplication1.csproj", "{3C1A05EB-663C-448E-8BFE-F2AF0F45A84F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "asp dotnet\WebApplication1\WebApplication1.csproj", "{3C1A05EB-663C-448E-8BFE-F2AF0F45A84F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ASP.NET\ClassLibrary1\ClassLibrary1.csproj", "{C2853AC5-1423-4D5D-A54A-E802F091DB2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "asp dotnet\ClassLibrary1\ClassLibrary1.csproj", "{C2853AC5-1423-4D5D-A54A-E802F091DB2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1.Tests", "ASP.NET\WebApplication1.Tests\WebApplication1.Tests.csproj", "{B8172C24-FD24-4334-A13D-AF043C789536}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1.Tests", "asp dotnet\WebApplication1.Tests\WebApplication1.Tests.csproj", "{B8172C24-FD24-4334-A13D-AF043C789536}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService1", "ASP.NET\WorkerService1\WorkerService1.csproj", "{80CFF3CD-3172-F454-CE68-38010E6548C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService1", "asp dotnet\WorkerService1\WorkerService1.csproj", "{80CFF3CD-3172-F454-CE68-38010E6548C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", ".NET\SharedLibrary\SharedLibrary.csproj", "{9E9D1605-96D1-4339-96E9-247669FDDBED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "dotnet\SharedLibrary\SharedLibrary.csproj", "{9E9D1605-96D1-4339-96E9-247669FDDBED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
