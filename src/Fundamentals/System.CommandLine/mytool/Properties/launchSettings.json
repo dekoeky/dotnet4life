@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "--help": { "commandName": "Project", "commandLineArgs": "--help" },
+
+    "demo": { "commandName": "Project", "commandLineArgs": "demo" },
+
+    
+    "math": { "commandName": "Project", "commandLineArgs": "math" },
+    "math.Add": { "commandName": "Project", "commandLineArgs": "math add 3.14 12" }
+  }
+}
