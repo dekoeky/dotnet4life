@@ -14,7 +14,7 @@ public class SimpleCsvInputFormatter
         , IInputFormatter
 
 {
-    private char splitChar = ';';
+    private const char SplitChar = ';';
 
     public SimpleCsvInputFormatter()
     {

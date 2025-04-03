@@ -1,5 +1,7 @@
+using Formatters.Endpoints;
 using Formatters.Formatters.Output;
-using Formatters.Services;
+using Formatters.Services.Demo;
+using Formatters.Services.WeatherForecasts;
 using Microsoft.AspNetCore.Mvc.Formatters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,7 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHostedService<MvcFormattersPrinterService>();
+builder.Services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
 
 
 var app = builder.Build();
@@ -38,5 +41,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapMinimalApis();
 
 app.Run();

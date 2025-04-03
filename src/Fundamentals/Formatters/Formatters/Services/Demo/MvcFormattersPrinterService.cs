@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace Formatters.Services;
+namespace Formatters.Services.Demo;
 
 public class MvcFormattersPrinterService(ILogger<MvcFormattersPrinterService> logger, IOptions<MvcOptions> options) : BackgroundService
 {
