@@ -1,7 +1,8 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
+using PerformanceTests.Benchmarks.DataTypes.Enums.Poker;
 
-namespace PerformanceTests.Benchmarks.Enums.Poker.Benchmarks;
+namespace PerformanceTests.Benchmarks.DataTypes.Enums.Poker.Benchmarks;
 
 [HtmlExporter]
 [MarkdownExporterAttribute.Default]

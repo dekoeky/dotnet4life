@@ -1,4 +1,4 @@
-﻿namespace PerformanceTests.Benchmarks.Enums.Poker;
+﻿namespace PerformanceTests.Benchmarks.DataTypes.Enums.Poker;
 
 public static class CardNameConstants
 {

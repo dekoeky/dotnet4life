@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
+using PerformanceTests.Benchmarks.DataTypes.Enums.Poker;
 
-namespace PerformanceTests.Benchmarks.Enums.Poker.Benchmarks;
+namespace PerformanceTests.Benchmarks.DataTypes.Enums.Poker.Benchmarks;
 
 public class GetCardColorBenchmarks : CardNameBenchmarks
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace PerformanceTests.Benchmarks.Enums.Poker;
+namespace PerformanceTests.Benchmarks.DataTypes.Enums.Poker;
 
 /// <summary>
 /// The rank of a poker card

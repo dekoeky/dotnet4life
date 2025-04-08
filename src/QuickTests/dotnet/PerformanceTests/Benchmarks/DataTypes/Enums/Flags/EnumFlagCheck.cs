@@ -1,7 +1,10 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace PerformanceTests.Benchmarks.Enums;
+namespace PerformanceTests.Benchmarks.DataTypes.Enums.Flags;
 
+/// <summary>
+/// What is the fastest way to check if a flag was set on an enum type?
+/// </summary>
 public class EnumFlagCheck
 {
     [Benchmark]

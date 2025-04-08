@@ -1,6 +1,6 @@
-﻿using static PerformanceTests.Benchmarks.Enums.Poker.CardNameConstants;
+﻿using static PerformanceTests.Benchmarks.DataTypes.Enums.Poker.CardNameConstants;
 
-namespace PerformanceTests.Benchmarks.Enums.Poker;
+namespace PerformanceTests.Benchmarks.DataTypes.Enums.Poker;
 
 public static class CardMath
 {
