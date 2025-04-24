@@ -8,7 +8,7 @@ public class StringCreateBenchmarks
     private string _s = string.Empty;
 
     [Benchmark]
-    public string Regular()
+    public string Constant()
     {
         _s = "Hello";
         return _s;
@@ -21,17 +21,25 @@ public class StringCreateBenchmarks
         return _s;
     }
 
-    private readonly char[] _preCreatedCharArray = new char[5];
+    [Benchmark]
+    public string SpanToArray()
+    {
+        Span<char> span = ['H', 'e', 'l', 'l', 'o'];
+        _s = new string(span);
+        return _s;
+    }
 
     [Benchmark]
-    public string PreCreatedCharArrayToString()
+    public string StringCreate()
     {
-        _preCreatedCharArray[0] = 'H';
-        _preCreatedCharArray[1] = 'e';
-        _preCreatedCharArray[2] = 'l';
-        _preCreatedCharArray[3] = 'l';
-        _preCreatedCharArray[4] = 'o';
-        _s = new string(_preCreatedCharArray);
+        _s = string.Create(5, 0, (span, _) =>
+        {
+            span[0] = 'H';
+            span[1] = 'e';
+            span[2] = 'l';
+            span[3] = 'l';
+            span[4] = 'o';
+        });
         return _s;
     }
 }
