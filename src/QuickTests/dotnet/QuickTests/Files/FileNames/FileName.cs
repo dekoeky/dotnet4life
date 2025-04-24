@@ -1,4 +1,4 @@
-﻿namespace QuickTests.FileNames
+﻿namespace QuickTests.Files.FileNames
 {
     [TestClass]
     public class FileName
