@@ -16,7 +16,7 @@ public class NumericCasts
 
         //Assert
         Console.WriteLine($"""
-                           Original:     {original}
+                           Original:      {original}
                            Casted as int: {castedToInt}
                            Casted Back:   {castedBack}
                            """);
