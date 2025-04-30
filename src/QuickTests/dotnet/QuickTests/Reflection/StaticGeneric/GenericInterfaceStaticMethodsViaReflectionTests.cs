@@ -1,4 +1,5 @@
-﻿using QuickTests.Reflection.StaticGeneric.Models;
+﻿using SharedLibrary;
+using SharedLibrary.Reflection.StaticGeneric.Models;
 using System.CodeDom.Compiler;
 using InvalidOperationException = System.InvalidOperationException;
 
@@ -11,8 +12,8 @@ namespace QuickTests.Reflection.StaticGeneric;
 public class GenericInterfaceStaticMethodsViaReflectionTests
 {
     [DataTestMethod]
-    [DataRow(typeof(A))]
-    [DataRow(typeof(B))]
+    [DataRow(typeof(TimesTwo))]
+    [DataRow(typeof(TimesThree))]
     public void PrintReflectionInfo(Type type)
     {
         //Arrange
@@ -26,12 +27,12 @@ public class GenericInterfaceStaticMethodsViaReflectionTests
     }
 
     [DataTestMethod]
-    [DataRow(typeof(A))]
-    [DataRow(typeof(B))]
+    [DataRow(typeof(TimesTwo))]
+    [DataRow(typeof(TimesThree))]
     public void PrintImplementation(Type type)
     {
         //Arrange
-        using var w = new IndentedTextWriter(Console.Out);
+        using var writer = new IndentedTextWriter(Console.Out);
         var interfaceType = typeof(IDemo<,>);
 
         //Act
@@ -41,19 +42,25 @@ public class GenericInterfaceStaticMethodsViaReflectionTests
 
         //Assert
         Assert.IsNotNull(interfaceOnType);
-        w.WriteLine(
-            $"{type.Name} implements {interfaceType.GetFriendlyTypeName()} as {interfaceOnType.GetFriendlyTypeName()}");
+        writer.WriteLine(
+            $"{type.Name} implements {interfaceType.GetFriendlyTypeName()} " +
+            $"as {interfaceOnType.GetFriendlyTypeName()}");
     }
 
+    /// <summary>
+    /// This test attempts to retrieve the <see cref="IDemo{TSelf,TOther}"/> interface on the given type,
+    /// and call its static method <see cref="IDemo{TSelf,TOther}.Execute(double)"/> via reflection.
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="value"></param>
+    /// <param name="expectedResult"></param>
+    /// <exception cref="InvalidOperationException"></exception>
     [DataTestMethod]
-    [DataRow(typeof(A))]
-    [DataRow(typeof(B))]
-    public void CallInterfaceMethodOnImplementingClass(Type type)
+    [DataRow(typeof(TimesTwo), 5, 10)]
+    [DataRow(typeof(TimesThree), 5, 15)]
+    public void CallInterfaceMethodOnImplementingClass(Type type, double value, double expectedResult)
     {
         //ARRANGE
-        const double value = 5;
-        const double expectedResult = 10;
-        using var w = new IndentedTextWriter(Console.Out);
         var interfaceType = typeof(IDemo<,>);
 
         //ACT
@@ -61,7 +68,7 @@ public class GenericInterfaceStaticMethodsViaReflectionTests
         //Find the implemented interface
         var interfaceOnType = type
             .GetInterfaces()
-            .FirstOrDefault(it => it.GetGenericTypeDefinition() == interfaceType)
+            .SingleOrDefault(it => it.GetGenericTypeDefinition() == interfaceType)
             ?? throw new InvalidOperationException("We expect for this test that this is never null");
 
         //Get the interface mapping for the current type
@@ -71,10 +78,10 @@ public class GenericInterfaceStaticMethodsViaReflectionTests
         var targetMethod = map.TargetMethods.First();
 
         //Convert it into a delegate
-        var timesTwo = targetMethod.CreateDelegate<TimesTwoDelegate>();
+        var @delegate = targetMethod.CreateDelegate<DoubleOperationDelegate>();
 
         //Call the delegate
-        var result = timesTwo(value);
+        var result = @delegate.Invoke(value);
 
         //ASSERT
         Assert.AreEqual(expectedResult, result);

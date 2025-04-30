@@ -1,4 +1,4 @@
-﻿namespace QuickTests;
+﻿namespace SharedLibrary;
 
 public static class TypeExtensions
 {
