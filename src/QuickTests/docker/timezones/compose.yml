@@ -1,0 +1,39 @@
+services:
+
+  alpine:
+    build:
+      context: .
+      dockerfile: PrintTimeZoneInfo/alpine.Dockerfile
+  
+  default:
+    build:
+      context: .
+      dockerfile: PrintTimeZoneInfo/default.Dockerfile
+      
+  alpine-brussel:
+    build:
+      context: .
+      dockerfile: PrintTimeZoneInfo/alpine.Dockerfile
+    environment:
+      TZ: Europe/Brussels
+  
+  default-brussel:
+    build:
+      context: .
+      dockerfile: PrintTimeZoneInfo/default.Dockerfile
+    environment:
+      TZ: Europe/Brussels
+
+  alpine-hongkong:
+    build:
+      context: .
+      dockerfile: PrintTimeZoneInfo/alpine.Dockerfile
+    environment:
+      TZ: 	Asia/Hong_Kong
+  
+  default-hongkong:
+    build:
+      context: .
+      dockerfile: PrintTimeZoneInfo/default.Dockerfile
+    environment:
+      TZ: 	Asia/Hong_Kong

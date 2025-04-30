@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PrintTimeZoneInfo": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
