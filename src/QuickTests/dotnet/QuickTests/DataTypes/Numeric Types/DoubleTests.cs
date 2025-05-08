@@ -5,7 +5,7 @@
 /// </summary>
 /// <seealso href="https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-double"/>
 [TestClass]
-public class DoubleTests
+public class DoubleTests : NumericTestsBase<double>
 {
     [DataTestMethod]
     [DataRow(+Math.PI)]
@@ -23,7 +23,6 @@ public class DoubleTests
 
         // Extract sign (bit 63, or left most bit)
         var sign = bits >> 63 == 0 ? 1 : -1;
-
 
         // Extract exponent (bits 52-62)
         var exponent = (int)((bits >> 52) & 0b11111111111);

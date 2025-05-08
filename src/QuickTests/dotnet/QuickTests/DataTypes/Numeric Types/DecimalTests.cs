@@ -5,21 +5,10 @@
 /// </summary>
 /// <seealso href="https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-decimal"/>
 [TestClass]
-public class DecimalTests
+public class DecimalTests : NumericTestsBase<decimal>
 {
-    [TestMethod]
-    public void SizeOf()
-    {
-        const int bytes = sizeof(decimal);
-        const int bits = bytes * 8;
-
-        Console.WriteLine("sizeof(decimal)");
-        Console.WriteLine($"  Bytes: {bytes}");
-        Console.WriteLine($"  Bits : {bits}");
-    }
-
-    [TestMethod] public void MaxValue() => PrintValue(decimal.MaxValue);
-    [TestMethod] public void MinValue() => PrintValue(decimal.MinValue);
+    [TestMethod] public void MaxValue() => Explain(decimal.MaxValue);
+    [TestMethod] public void MinValue() => Explain(decimal.MinValue);
 
 
     [TestMethod]
@@ -37,7 +26,7 @@ public class DecimalTests
 
         //Assert
         foreach (var value in values)
-            PrintValue(value);
+            Explain(value);
     }
 
 
@@ -53,7 +42,7 @@ public class DecimalTests
         {
             //ASSERT
             //Print Current Value
-            PrintValue(value);
+            Explain(value);
 
             //ACT
             //Divide the value by 2, to see what happens to the Scale
@@ -65,7 +54,7 @@ public class DecimalTests
     /// Centralized way to demonstrate the internals of a given <see cref="decimal"/> value.
     /// </summary>
     /// <param name="value"></param>
-    private static void PrintValue(decimal value)
+    private static void Explain(decimal value)
     {
         var hundredTwentyEightBits = decimal.GetBits(value);
 

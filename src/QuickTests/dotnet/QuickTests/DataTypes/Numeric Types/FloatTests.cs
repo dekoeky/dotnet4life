@@ -5,7 +5,7 @@
 /// </summary>
 /// <seealso href="https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-float"/>
 [TestClass]
-public class FloatTests
+public class FloatTests : NumericTestsBase<float>
 {
     [DataTestMethod]
     [DataRow(+MathF.PI)]
@@ -16,6 +16,7 @@ public class FloatTests
     [DataRow(+99999.0f)]
     [DataRow(-99999.0f)]
     [DataRow(0f)]
+    [DataRow(11f)]
     public void Float_ToSignExponentMantissa_AndBack(float value)
     {
         var bits = BitConverter.SingleToInt32Bits(value);
