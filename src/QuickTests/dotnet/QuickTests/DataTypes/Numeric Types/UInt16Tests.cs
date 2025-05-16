@@ -1,20 +1,20 @@
 ﻿namespace QuickTests.DataTypes.Numeric_Types;
 
 /// <summary>
-/// <see cref="int"/> related tests.
+/// <see cref="ushort"/> related tests.
 /// </summary>
 [TestClass]
-public class UInt32Tests : NumericTestsBase<uint>
+public class UInt16Tests : NumericTestsBase<ushort>
 {
     [DataTestMethod]
-    [DataRow(0u)]
-    [DataRow(1u)]
-    [DataRow(11u)]
-    [DataRow(255u)]
-    [DataRow(256u)]
-    [DataRow(0b10000000000000000000000000000000u)] //MSB
-    [DataRow(0xffffffff)]
-    public void Explain(uint value)
+    [DataRow((ushort)0u)]
+    [DataRow((ushort)1u)]
+    [DataRow((ushort)11u)]
+    [DataRow((ushort)255u)]
+    [DataRow((ushort)256u)]
+    [DataRow((ushort)0b1000000000000000u)] //MSB
+    [DataRow((ushort)0xffff)]
+    public void Explain(ushort value)
     {
         // Calculate binary representations
         var bitString = Convert.ToString(value, 2).PadLeft(32, '0');

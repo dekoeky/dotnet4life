@@ -18,6 +18,7 @@ public class Int32Tests : NumericTestsBase<int>
     [DataRow(-1)]
     [DataRow(0)]
     [DataRow(1)]
+    [DataRow(11)]
     [DataRow(255)]
     [DataRow(256)]
     [DataRow(255 * 255 - 1)]
