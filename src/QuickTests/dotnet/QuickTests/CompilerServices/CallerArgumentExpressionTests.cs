@@ -2,6 +2,9 @@ using System.Runtime.CompilerServices;
 
 namespace QuickTests.CompilerServices;
 
+//CallerArgumentExpressionAttribute is available in C# 10.0 and later, and .NET 6.0 and later.
+#if NET6_0_OR_GREATER
+
 /// <summary>
 /// <see cref="CallerArgumentExpressionAttribute"/> related tests.
 /// </summary>
@@ -74,3 +77,4 @@ public class CallerArgumentExpressionTests
 
     #endregion
 }
+#endif
