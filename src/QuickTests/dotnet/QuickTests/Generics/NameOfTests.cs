@@ -13,7 +13,7 @@ public class NameOfTests
         var typeOfMyFavoriteClass_Name = typeof(MyFavoriteClass).Name;
         const string nameOfMyFavoriteClass = nameof(MyFavoriteClass);
 
-        Console.WriteLine($"nameof({nameof(nameOfMyFavoriteClass)}) : {nameOfMyFavoriteClass}");
+        Console.WriteLine($"nameof({nameof(nameOfMyFavoriteClass)})      : {nameOfMyFavoriteClass}");
         Console.WriteLine($"typeof({nameof(nameOfMyFavoriteClass)}).Name : {typeOfMyFavoriteClass_Name}");
     }
 
