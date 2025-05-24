@@ -5,23 +5,40 @@ using System.Text.Json;
 namespace PerformanceTests.Benchmarks.Json.SourceGenerators.MoreComplex;
 
 [MemoryDiagnoser]
-public class JsonSerializeBenchmarks
+public class JsonSourceGeneratedSerializedBenchmarks
 {
-
     private static readonly List<Customer> Customers = GenerateSampleData(1000);
-    private static readonly JsonSerializerOptions DefaultOptions = new JsonSerializerOptions();
+    private static readonly JsonSerializerOptions DefaultOptions = JsonSerializerOptions.Default;
+    private string json;
+
+
+    [GlobalSetup]
+    public void Setup()
+    {
+        var assembly = typeof(JsonSourceGeneratedSerializedBenchmarks).Assembly;
+        using var stream = assembly.GetManifestResourceStream("PerformanceTests.Benchmarks.Json.SourceGenerators.MoreComplex.testdata.json")
+            ?? throw new InvalidOperationException("Can't load testdata");
+        using var streamReader = new StreamReader(stream);
+        json = streamReader.ReadToEnd();
+    }
 
     [Benchmark]
-    public string BenchmarkDefaultSerializer() => JsonSerializer.Serialize(Customers, DefaultOptions);
+    public string SerializeDefault() => JsonSerializer.Serialize(Customers, DefaultOptions);
 
     [Benchmark]
-    public string BenchmarkSourceGeneratedSerializer() => JsonSerializer.Serialize(Customers, Models.CustomerJsonContext.Default.ListCustomer);
+    public string SerializeSourceGenerated() => JsonSerializer.Serialize(Customers, CustomerJsonContext.Default.ListCustomer);
+
+    [Benchmark]
+    public List<Customer>? DeserializeDefault() => JsonSerializer.Deserialize<List<Customer>>(json, DefaultOptions);
+
+    [Benchmark]
+    public List<Customer>? DeserializeSourceGenerated() => JsonSerializer.Deserialize(json, CustomerJsonContext.Default.ListCustomer);
 
 
     private static List<Customer> GenerateSampleData(int count)
     {
         var customers = new List<Customer>();
-        for (int i = 0; i < count; i++)
+        for (var i = 0; i < count; i++)
         {
             customers.Add(new Customer
             {
@@ -36,14 +53,14 @@ public class JsonSerializeBenchmarks
                     PostalCode = $"12345-{i:D4}",
                     Country = Country.USA
                 },
-                Orders = new List<Order>
-                {
+                Orders =
+                [
                     new Order
                     {
                         OrderId = i + 1000,
                         Total = 99.99m,
-                        Items = new List<OrderItem>
-                        {
+                        Items =
+                        [
                             new OrderItem
                             {
                                 ProductId = i + 5000,
@@ -51,11 +68,12 @@ public class JsonSerializeBenchmarks
                                 Quantity = 2,
                                 Price = 49.99m
                             }
-                        }
+                        ]
                     }
-                }
+                ]
             });
         }
+
         return customers;
     }
 }
