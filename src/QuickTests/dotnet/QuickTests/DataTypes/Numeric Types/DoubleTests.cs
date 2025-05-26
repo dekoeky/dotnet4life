@@ -8,6 +8,10 @@
 public class DoubleTests : NumericTestsBase<double>
 {
     [DataTestMethod]
+    [DataRow(+0.0001)]
+    [DataRow(-0.0001)]
+    [DataRow(+240.0)]
+    [DataRow(-240.0)]
     [DataRow(+Math.PI)]
     [DataRow(-Math.PI)]
     [DataRow(double.MaxValue)]
