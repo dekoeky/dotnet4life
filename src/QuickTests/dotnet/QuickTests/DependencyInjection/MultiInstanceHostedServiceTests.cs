@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace QuickTests.Services;
+namespace QuickTests.DependencyInjection;
 
 [TestClass]
 public class MultiInstanceHostedServiceTests
