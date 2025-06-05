@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="QuickTests" />
+    <InternalsVisibleTo Include="PerformanceTests" />
+  </ItemGroup>
+
 </Project>
