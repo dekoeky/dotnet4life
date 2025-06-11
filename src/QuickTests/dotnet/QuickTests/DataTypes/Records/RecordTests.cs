@@ -4,7 +4,7 @@ namespace QuickTests.DataTypes.Records;
 public class RecordTests
 {
     [TestMethod]
-    public void New_Equals_Default()
+    public void New_Equals_Default_EqualityOperator()
     {
         //ARRANGE
         var r = new MyRecord();
@@ -15,6 +15,20 @@ public class RecordTests
         //ASSERT
         Assert.IsTrue(result);
     }
+
+    [TestMethod]
+    public void New_Equals_Default_EqualsMethod()
+    {
+        //ARRANGE
+        var r = new MyRecord();
+
+        //ACT
+        var result = r.Equals(MyRecord.Default);
+
+        //ASSERT
+        Assert.IsTrue(result);
+    }
+
 
     [TestMethod]
     public void OtherParameters_DoesNotEqual_Default()
