@@ -7,6 +7,8 @@
 [TestClass]
 public class FloatTests : NumericTestsBase<float>
 {
+    //TODO: Add check to see if numbers can be represented as float, such as 123456789f --> Becomes 123456790f
+
     [DataTestMethod]
     [DataRow(+MathF.PI)]
     [DataRow(-MathF.PI)]
