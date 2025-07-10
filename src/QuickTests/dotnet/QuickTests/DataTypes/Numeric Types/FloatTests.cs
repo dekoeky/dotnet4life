@@ -4,6 +4,7 @@
 /// <see cref="float"/> related tests.
 /// </summary>
 /// <seealso href="https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-float"/>
+/// <seealso href="https://www.h-schmidt.net/FloatConverter/IEEE754.html"/>
 [TestClass]
 public class FloatTests : NumericTestsBase<float>
 {
