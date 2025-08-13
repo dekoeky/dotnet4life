@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{9A4C582C-A5DB-4F86-B95A-B950F587A8CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorApp1", "RazorApp1\RazorApp1.csproj", "{00A591D5-5C26-4E3B-8D8A-1A9B6276F7D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp1", "MvcApp1\MvcApp1.csproj", "{0F85693C-603E-415C-8242-E83D4BC426E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A4C582C-A5DB-4F86-B95A-B950F587A8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A4C582C-A5DB-4F86-B95A-B950F587A8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A4C582C-A5DB-4F86-B95A-B950F587A8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A4C582C-A5DB-4F86-B95A-B950F587A8CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A591D5-5C26-4E3B-8D8A-1A9B6276F7D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A591D5-5C26-4E3B-8D8A-1A9B6276F7D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A591D5-5C26-4E3B-8D8A-1A9B6276F7D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A591D5-5C26-4E3B-8D8A-1A9B6276F7D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F85693C-603E-415C-8242-E83D4BC426E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F85693C-603E-415C-8242-E83D4BC426E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F85693C-603E-415C-8242-E83D4BC426E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F85693C-603E-415C-8242-E83D4BC426E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p><badge type="Danger" title="All good">This is a Danger Badge</badge></p>
+    <p> <badge type="Success" title="All good">This is a Success Badge</badge></p>
+    <p><badge type="Warning" title="All good">This is a Warning Badge</badge></p>
+    <p><badge type="Info" title="All good">This is an Info Badge</badge></p>
+    <p><badge type="Info">This one has no tooltip</badge></p>
+    <table-for items="Model.People" />
+</div>
