@@ -8,7 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
+    <EmbeddedResource Include="Benchmarks\Json\SourceGenerators\MoreComplex\testdata.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.4" />
   </ItemGroup>
 

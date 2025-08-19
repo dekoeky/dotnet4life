@@ -4,9 +4,12 @@
 /// <see cref="float"/> related tests.
 /// </summary>
 /// <seealso href="https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-float"/>
+/// <seealso href="https://www.h-schmidt.net/FloatConverter/IEEE754.html"/>
 [TestClass]
 public class FloatTests : NumericTestsBase<float>
 {
+    //TODO: Add check to see if numbers can be represented as float, such as 123456789f --> Becomes 123456790f
+
     [DataTestMethod]
     [DataRow(+MathF.PI)]
     [DataRow(-MathF.PI)]

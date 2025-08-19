@@ -6,6 +6,8 @@
 [TestClass]
 public class Int32Tests : NumericTestsBase<int>
 {
+    //TODO: Explicit Two's complement representation
+
     /// <summary>
     /// Mask to extract the sign bit from an <see cref="int"/>.
     /// </summary>

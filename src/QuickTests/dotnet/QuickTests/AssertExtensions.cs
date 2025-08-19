@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 
 namespace QuickTests;
@@ -65,5 +66,16 @@ internal static class AssertExtensions
     public static void IsSmallerThanOrEqual(this Assert assert, DateTime min, DateTime actual)
     {
         Assert.IsTrue(actual <= min, $"The {nameof(actual)} value {actual} was not smaller than or equal to {nameof(min)} value {min}");
+    }
+
+    [SuppressMessage("ReSharper", "NotAccessedField.Local")]
+    private static object? _ignore;
+
+    /// <summary>
+    /// Used to ignore a value in tests, typically to avoid the compiler optimizing out code.
+    /// </summary>
+    public static void Ignore<T>(this Assert assert, T value)
+    {
+        _ignore = value; // This is a no-op, just to avoid unused variable warnings.
     }
 }
