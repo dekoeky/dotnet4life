@@ -1,0 +1,82 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+
+    "Undefined": {
+      "commandName": "Project",
+      "environmentVariables": {
+        //"DOTNET_ENVIRONMENT": //Undefined on purpose
+      }
+    },
+
+
+
+
+    // By Environment Variables ###########################################################
+    "ENV.Development": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+
+    "ENV.Production": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Production"
+      }
+    },
+
+    "ENV.Staging": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Staging"
+      }
+    },
+
+    "ENV.TSCT+FV-C801-PLC0001": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "TSCT+FV-C801-PLC0001"
+      }
+    },
+    // ####################################################################################
+
+    // By CLI Arguments ###################################################################
+    // Note: When using environments with spaces, use \"NAME WITH SPACES\"  (delimited by quotes)
+
+    "CLI.Development": {
+      "commandName": "Project",
+      "commandLineArgs": "--environment Development"
+    },
+
+    "CLI.Production": {
+      "commandName": "Project",
+      "commandLineArgs": "--environment Production"
+    },
+
+    "CLI.Staging": {
+      "commandName": "Project",
+      "commandLineArgs": "--environment Staging"
+    },
+
+    "CLI.TSCT+FV-C801-PLC0001": {
+      "commandName": "Project",
+      "commandLineArgs": "--environment TSCT+FV-C801-PLC0001"
+    },
+
+    // ####################################################################################
+
+    // Mixed ##############################################################################
+
+    "Mixed": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "ENV1"
+      },
+      "commandLineArgs": "--environment \"ENV2\""
+    }
+
+    // ####################################################################################
+  }
+}
