@@ -1,26 +1,8 @@
 {
   "profiles": {
-    //"http": {
-    //  "commandName": "Project",
-    //  "launchBrowser": true,
-    //  "environmentVariables": {
-    //    "ASPNETCORE_ENVIRONMENT": "Development"
-    //  },
-    //  "dotnetRunMessages": true,
-    //  "applicationUrl": "http://localhost:5289"
-    //},
-
-    //"https": {
-    //  "commandName": "Project",
-    //  "launchBrowser": true,
-    //  "environmentVariables": {
-    //    "ASPNETCORE_ENVIRONMENT": "Development"
-    //  },
-    //  "dotnetRunMessages": true,
-    //  "applicationUrl": "https://localhost:7094;http://localhost:5289"
-    //},
-
-    "Development": {
+    //Profiles that use ASPNETCORE_ENVIRONMENT environment variable,
+    //to set the applications environment
+    "ENV.Development": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
@@ -29,7 +11,7 @@
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7094;http://localhost:5289"
     },
-    "Staging": {
+    "ENV.Staging": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
@@ -38,7 +20,7 @@
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7094;http://localhost:5289"
     },
-    "Production": {
+    "ENV.Production": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
@@ -46,6 +28,18 @@
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7094;http://localhost:5289"
+    },
+
+
+    //Test using DOTNET_ENVIRONMENT instead of ASPNETCORE_ENVIRONMENT
+    "DOTNET_ENVIRONMENT": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "TESTJE"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5289"
     },
 
 
