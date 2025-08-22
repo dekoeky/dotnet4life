@@ -74,7 +74,7 @@
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "ENV1"
       },
-      "commandLineArgs": "--environment \"ENV2\""
+      "commandLineArgs": "--environment ENV2"
     }
 
     // ####################################################################################
