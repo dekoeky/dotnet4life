@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SharedLibrary.Logging.LogMessages;
 using SharedLibrary.Logging.LogMessages.Models;
 using System.Text.Json;
 
@@ -7,60 +8,50 @@ namespace QuickTests.Logging.LogMessages;
 [TestClass]
 public class LoggerMessageTests : IDisposable
 {
-    private readonly ILogger logger;
-    private readonly ILoggerFactory loggerFactory;
+    private readonly ILogger _logger;
+    private readonly ILoggerFactory _loggerFactory;
 
     public LoggerMessageTests()
     {
-        //Create a logger factory, that creates loggers that will log Json formatted messages to the console
-        loggerFactory = LoggerFactory.Create(ConfigureLoggingBuilder);
+        //Write to json console, so we can see the structured log output
+        _loggerFactory = LoggerFactory.Create(builder =>
+            builder.AddJsonConsole(options =>
+                options.JsonWriterOptions = new JsonWriterOptions
+                {
+                    Indented = true, //Make it easier to read in the test output
+                }));
 
         //Create a logger
-        logger = loggerFactory.CreateLogger("DemoCategory");
+        _logger = _loggerFactory.CreateLogger<LoggerMessageTests>();
     }
 
-    private static void ConfigureLoggingBuilder(ILoggingBuilder builder)
-    {
-        builder.AddJsonConsole(options =>
-            options.JsonWriterOptions = new JsonWriterOptions()
-            {
-                Indented = true,
-            });
-    }
-
-    private static readonly Resident resident = new()
+    private static readonly Resident Resident = new()
     {
         Name = "Liana",
         CityOfResidence = "Seattle",
     };
 
     [TestMethod]
-    public void CityOfResidence()
-    {
-        //Act:
-        logger.CityOfResidence(resident.Name, resident.CityOfResidence);
-    }
-
-    [TestMethod]
     public void CityOfResidenceSimple()
     {
         //Act:
-        logger.CityOfResidenceSimple(resident.Name, resident.CityOfResidence);
+        _logger.CityOfResidenceSimple(Resident.Name, Resident.CityOfResidence);
     }
 
     [TestMethod]
-    public void CityOfResidenceSimpleAggressiveInlining()
+    public void CityOfResidenceSourceGenerated()
     {
         //Act:
-        logger.CityOfResidenceSimpleAggressiveInlining(resident);
+        _logger.CityOfResidenceSourceGenerated(Resident.Name, Resident.CityOfResidence);
     }
+
 
     [TestMethod]
-    public void CityOfResidenceAggressiveInlining()
+    public void CityOfResidenceStringInterpolationBadWay()
     {
         //Act:
-        logger.CityOfResidenceAggressiveInlining(resident);
+        _logger.CityOfResidenceStringInterpolationBadWay(Resident.Name, Resident.CityOfResidence);
     }
 
-    void IDisposable.Dispose() => loggerFactory.Dispose(); //To make sure messages are flushed
+    void IDisposable.Dispose() => _loggerFactory.Dispose(); //To make sure messages are flushed
 }

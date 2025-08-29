@@ -1,11 +1,12 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.Logging;
-using QuickTests.Logging.LogMessages;
+using SharedLibrary.Logging;
+using SharedLibrary.Logging.LogMessages;
 using SharedLibrary.Logging.LogMessages.Models;
-using System.Text.Json;
 
 namespace PerformanceTests.Benchmarks.Logging.LogMessages;
 
+[ShortRunJob]
 [MemoryDiagnoser]
 public class LoggerMessageTests
 {
@@ -15,7 +16,11 @@ public class LoggerMessageTests
     [Params("Compton")]
     public string City;
 
+    [ParamsAllValues]
+    public bool LoggerEnabled;
+
     private Resident resident;
+    private ILoggerFactory loggerFactory;
     private ILogger logger;
 
     [GlobalSetup]
@@ -27,39 +32,27 @@ public class LoggerMessageTests
             CityOfResidence = City,
         };
 
-        logger = CreateLogger();
-    }
-
-    private static ILogger CreateLogger()
-    {
         //Create a logger factory, that creates loggers that will log Json formatted messages to the console
-        var loggerFactory = LoggerFactory.Create(ConfigureLoggingBuilder);
+        loggerFactory = LoggerFactory.Create(builder =>
+           builder.AddProvider(new NoopProvider(LoggerEnabled)));
 
         //Create a logger
-        return loggerFactory.CreateLogger("DemoCategory");
+        logger = loggerFactory.CreateLogger<LoggerMessageTests>();
     }
 
-    private static void ConfigureLoggingBuilder(ILoggingBuilder builder)
+    [GlobalCleanup]
+    public void CleanUp()
     {
-        builder.AddJsonConsole(options =>
-            options.JsonWriterOptions = new JsonWriterOptions()
-            {
-                Indented = true
-            });
+        loggerFactory.Dispose();
     }
 
     [Benchmark]
     public void SourceGenerated_Properties()
-        => logger.CityOfResidence(Name, City);
+        => logger.CityOfResidenceSourceGenerated(Name, City);
 
     [Benchmark]
     public void SourceGenerated_Poco()
-        => logger.CityOfResidence(resident);
-
-    [Benchmark]
-    public void SourceGenerated_Poco_AggressiveInlining()
-        => logger.CityOfResidenceAggressiveInlining(resident);
-
+        => logger.CityOfResidenceSourceGenerated(resident);
 
     [Benchmark]
     public void Simple_Properties()
@@ -68,8 +61,4 @@ public class LoggerMessageTests
     [Benchmark]
     public void Simple_Poco()
         => logger.CityOfResidenceSimple(resident);
-
-    [Benchmark]
-    public void Simple_Poco_AggressiveInlining()
-        => logger.CityOfResidenceSimpleAggressiveInlining(resident);
 }
