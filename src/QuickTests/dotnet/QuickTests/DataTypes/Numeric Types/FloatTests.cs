@@ -61,4 +61,50 @@ public class FloatTests : NumericTestsBase<float>
         Console.WriteLine();
         Console.WriteLine($"Reconstructed Value:    {reconstructedValue}");
     }
+
+    [TestMethod]
+    [DataRow(float.MinValue, -3.4028233E+38f)]
+    [DataRow(-10f, -9.999999f)]
+    [DataRow(-1000000f, -999999.94f)]
+    [DataRow(0f, float.Epsilon)]
+    [DataRow(10f, 10.000001f)]
+    [DataRow(1000000f, 1000000.06f)]
+    [DataRow(float.MaxValue, float.PositiveInfinity)]
+    public void BitIncrement(float original, float expected)
+    {
+        // ---------- ACT --------------
+        var result = MathF.BitIncrement(original);
+        var delta = result - original;
+
+        // ---------- ASSERT -----------
+        Assert.AreEqual(expected, result);
+        Console.WriteLine($"""
+                           Original (float):                        {original}
+                           Smallest value, larger than original:    {result}
+                           Delta:                                   {delta}
+                           """);
+    }
+
+    [TestMethod]
+    [DataRow(float.MinValue, float.NegativeInfinity)]
+    [DataRow(-10f, -10.000001f)]
+    [DataRow(-1000000f, -1000000.06f)]
+    [DataRow(0f, -float.Epsilon)]
+    [DataRow(10f, 9.999999f)]
+    [DataRow(1000000f, 999999.94f)]
+    [DataRow(float.MaxValue, 3.4028233E+38f)]
+    public void BitDecrement(float original, float expected)
+    {
+        // ---------- ACT --------------
+        var result = MathF.BitDecrement(original);
+        var delta = result - original;
+
+        // ---------- ASSERT -----------
+        Assert.AreEqual(expected, result);
+        Console.WriteLine($"""
+                           Original (float):                        {original}
+                           Smallest value, larger than original:    {result}
+                           Delta:                                   {delta}
+                           """);
+    }
 }

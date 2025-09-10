@@ -61,4 +61,50 @@ public class DoubleTests : NumericTestsBase<double>
         Console.WriteLine();
         Console.WriteLine($"Reconstructed Value:    {reconstructedValue}");
     }
+
+    [TestMethod]
+    [DataRow(double.MinValue, -1.7976931348623155E+308d)]
+    [DataRow(-10d, -9.999999999999998d)]
+    [DataRow(-1000000d, -999999.9999999999d)]
+    [DataRow(0d, double.Epsilon)]
+    [DataRow(10d, 10.000000000000002d)]
+    [DataRow(1000000d, 1000000.0000000001d)]
+    [DataRow(double.MaxValue, double.PositiveInfinity)]
+    public void BitIncrement(double original, double expected)
+    {
+        // ---------- ACT --------------
+        var result = Math.BitIncrement(original);
+        var delta = result - original;
+
+        // ---------- ASSERT -----------
+        Assert.AreEqual(expected, result);
+        Console.WriteLine($"""
+                           Original (double):                       {original}
+                           Smallest value, larger than original:    {result}
+                           Delta:                                   {delta}
+                           """);
+    }
+
+    [TestMethod]
+    [DataRow(double.MinValue, double.NegativeInfinity)]
+    [DataRow(-10d, -10.000000000000002d)]
+    [DataRow(-1000000d, -1000000.0000000001d)]
+    [DataRow(0d, -double.Epsilon)]
+    [DataRow(10d, 9.999999999999998d)]
+    [DataRow(1000000d, 999999.9999999999d)]
+    [DataRow(double.MaxValue, 1.7976931348623155E+308d)]
+    public void BitDecrement(double original, double expected)
+    {
+        // ---------- ACT --------------
+        var result = Math.BitDecrement(original);
+        var delta = result - original;
+
+        // ---------- ASSERT -----------
+        Assert.AreEqual(expected, result);
+        Console.WriteLine($"""
+                           Original (double):                       {original}
+                           Smallest value, larger than original:    {result}
+                           Delta:                                   {delta}
+                           """);
+    }
 }
