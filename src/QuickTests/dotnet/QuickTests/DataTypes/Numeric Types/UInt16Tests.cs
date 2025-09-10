@@ -1,8 +1,5 @@
 ﻿namespace QuickTests.DataTypes.Numeric_Types;
 
-/// <summary>
-/// <see cref="ushort"/> related tests.
-/// </summary>
 [TestClass]
 public class UInt16Tests : NumericTestsBase<ushort>
 {
@@ -12,47 +9,37 @@ public class UInt16Tests : NumericTestsBase<ushort>
     [DataRow((ushort)11u)]
     [DataRow((ushort)255u)]
     [DataRow((ushort)256u)]
-    [DataRow((ushort)0b1000000000000000u)] //MSB
-    [DataRow((ushort)0xffff)]
+    [DataRow((ushort)0b1000_0000_0000_0000)] // MSB
+    [DataRow((ushort)0xFFFF)]
     public void Explain(ushort value)
     {
-        // Calculate binary representations
-        var bitString = Convert.ToString(value, 2).PadLeft(32, '0');
-        var bytes = BitConverter.GetBytes(value);
+        var bitString = Convert.ToString(value, 2).PadLeft(16, '0');
+        var bytes = BitConverter.GetBytes(value); // length = 2
         var hex = $"0x{value:x4}";
-        var (byte0, byte3) = BitConverter.IsLittleEndian
+        var (label0, label1) = BitConverter.IsLittleEndian
             ? ("LSB", "MSB")
             : ("MSB", "LSB");
 
         Console.WriteLine($"Original Value:        {value,10} ({value.GetType().Name})");
         Console.WriteLine();
-
         Console.WriteLine("Binary:");
         Console.WriteLine($"  Bits:                {bitString}");
-        Console.WriteLine($"  Bytes:               {hex}");
-        Console.WriteLine($"    [0]:               {bytes[0],-3} ({byte0})");
-        Console.WriteLine($"    [1]:               {bytes[1],-3}");
-        Console.WriteLine($"    [2]:               {bytes[2],-3}");
-        Console.WriteLine($"    [3]:               {bytes[3],-3} ({byte3})");
+        Console.WriteLine($"  Hex:                 {hex}");
+        Console.WriteLine($"  Bytes:");
+        Console.WriteLine($"    [0]:               {bytes[0],-3} ({label0})");
+        Console.WriteLine($"    [1]:               {bytes[1],-3} ({label1})");
         Console.WriteLine();
-
         Console.WriteLine("Contribution of each bit:");
 
-
-        // Loop Magnitude bits, LSB to MSB
-        for (var thisBitIndex = 0; thisBitIndex <= 31; thisBitIndex++)
+        // Loop 16 bits (0..15)
+        uint u = value;
+        for (int i = 0; i < 16; i++)
         {
-            // Calculate the value of this bit index
-            var thisBitValue = 1u << thisBitIndex;
-
-            // Check if this bit is set in the value
-            var thisBitTrue = (value & thisBitValue) == thisBitValue;
-            var thisBitChar = thisBitTrue ? '1' : '0';
-
-            // Calculate the amount contributed by this bit to the value
-            var thisResult = thisBitTrue ? thisBitValue : 0;
-
-            Console.WriteLine($"  Bit [{thisBitIndex:D2}] = {thisBitChar} x {thisBitValue,10} = {thisResult,10}");
+            uint mask = 1u << i;
+            bool isSet = (u & mask) != 0;
+            char bit = isSet ? '1' : '0';
+            uint contrib = isSet ? mask : 0u;
+            Console.WriteLine($"  Bit [{i:D2}] = {bit} x {mask,5} = {contrib,5}");
         }
     }
 }
