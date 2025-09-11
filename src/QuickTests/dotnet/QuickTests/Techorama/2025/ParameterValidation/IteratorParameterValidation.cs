@@ -67,12 +67,7 @@ public class IteratorParameterValidation
             Console.WriteLine(value);
     }
 
-
-
-
-
-
-    public static IEnumerable<int> Incorrect(int count)
+    private static IEnumerable<int> Incorrect(int count)
     {
         // This method only throws the exception when the first item is requested,
         // not when the method is called,
@@ -83,7 +78,7 @@ public class IteratorParameterValidation
             yield return i;
     }
 
-    public static IEnumerable<int> Correct_Using_LocalFunction(int count)
+    private static IEnumerable<int> Correct_Using_LocalFunction(int count)
     {
         // This method throws the exception when the method is called,
         // before any items are requested,
@@ -98,7 +93,8 @@ public class IteratorParameterValidation
                 yield return i;
         }
     }
-    public static IEnumerable<int> Correct_Using_ExternalMethod(int count)
+
+    private static IEnumerable<int> Correct_Using_ExternalMethod(int count)
     {
         // This method throws the exception when the method is called,
         // before any items are requested,
@@ -106,10 +102,10 @@ public class IteratorParameterValidation
         ArgumentOutOfRangeException.ThrowIfNegative(count);
 
         // Call an external method to encapsulate the iterator logic.
-        return ExternalIterator(count);
+        return ExternalIteratorFunction(count);
     }
 
-    private static IEnumerable<int> ExternalIterator(int count)
+    private static IEnumerable<int> ExternalIteratorFunction(int count)
     {
         for (var i = 0; i < count; i++)
             yield return i;
