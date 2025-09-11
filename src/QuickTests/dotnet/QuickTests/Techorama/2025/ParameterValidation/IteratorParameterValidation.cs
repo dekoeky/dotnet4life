@@ -2,6 +2,8 @@ using Implementations = SharedLibrary.Techorama._2025.ParameterValidation.Parame
 
 namespace QuickTests.Techorama._2025.ParameterValidation;
 
+
+/// <seealso cref="SharedLibrary.Techorama._2025.ParameterValidation.ParameterValidationImplementations"/>
 [TestClass]
 public class IteratorParameterValidation
 {
