@@ -1,3 +1,5 @@
+using Implementations = SharedLibrary.Techorama._2025.ParameterValidation.ParameterValidationImplementations;
+
 namespace QuickTests.Techorama._2025.ParameterValidation;
 
 [TestClass]
@@ -7,107 +9,66 @@ public class IteratorParameterValidation
     private const int GoodCount = +10;
 
     [TestMethod]
-    public void A_Loop_IncorrectMethod_WithGoodParameter_ShouldNotThrow()
+    public void Incorrect_WithGoodParameter_ShouldNotThrow()
     {
-        foreach (var value in Incorrect(GoodCount))
+        foreach (var value in Implementations.Incorrect(GoodCount))
             Console.WriteLine(value);
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void B_Loop_IncorrectMethod_WithBadParameter_ShouldThrow()
+    public void Correct_Using_ExternalMethod_WithGoodParameter_ShouldNotThrow()
     {
-        foreach (var value in Incorrect(BadCount))
-            Console.WriteLine(value);
-    }
-
-    // So far so good.
-    // However, only retrieving the iterator does not throw the exception
-
-    [TestMethod]
-    public void C_Loop_IncorrectMethod_WithBadParameter_ShouldThrow()
-    {
-        //This method does not throw an exception when only called (not enumerated), which is not idiomatic.
-        var iEnumerable = Incorrect(BadCount);
-
-        Assert.That.Ignore(iEnumerable);
-    }
-
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void D_Loop_CorrectMethodExternal_WithBadParameter_ShouldThrow()
-    {
-        var iEnumerable = Correct_Using_ExternalMethod(BadCount);
-
-        Assert.That.Ignore(iEnumerable);
-    }
-
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void E_Loop_CorrectMethodLocal_WithBadParameter_ShouldThrow()
-    {
-        var iEnumerable = Correct_Using_LocalFunction(BadCount);
-
-        Assert.That.Ignore(iEnumerable);
-    }
-
-
-
-    [TestMethod]
-    public void F_Loop_IncorrectMethod_WithGoodParameter_ShouldNotThrow()
-    {
-        foreach (var value in Correct_Using_ExternalMethod(GoodCount))
+        foreach (var value in Implementations.Correct_Using_ExternalMethod(GoodCount))
             Console.WriteLine(value);
     }
 
     [TestMethod]
-    public void G_Loop_IncorrectMethod_WithBadParameter_ShouldNotThrow()
+    public void Correct_Using_LocalFunction_WithGoodParameter_ShouldNotThrow()
     {
-        foreach (var value in Correct_Using_LocalFunction(GoodCount))
+        foreach (var value in Implementations.Correct_Using_LocalFunction(GoodCount))
             Console.WriteLine(value);
     }
 
-    private static IEnumerable<int> Incorrect(int count)
+    [TestMethod]
+    public void Incorrect_WithBadParameter_ShouldThrowOnLoop()
     {
-        // This method only throws the exception when the first item is requested,
-        // not when the method is called,
-        // which is not idiomatic.
-        ArgumentOutOfRangeException.ThrowIfNegative(count);
+        // ---------- ARRANGE ----------
+        var enumerable = Implementations.Incorrect(BadCount); //The exception is not thrown here yet
 
-        for (var i = 0; i < count; i++)
-            yield return i;
-    }
-
-    private static IEnumerable<int> Correct_Using_LocalFunction(int count)
-    {
-        // This method throws the exception when the method is called,
-        // before any items are requested,
-        // which is idiomatic and preferred.
-        ArgumentOutOfRangeException.ThrowIfNegative(count);
-        return IteratorCore();
-
-        // Local function to encapsulate the iterator logic.
-        IEnumerable<int> IteratorCore()
+        // ---------- ASSERT -----------
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
-            for (var i = 0; i < count; i++)
-                yield return i;
-        }
+            // ---------- ACT --------------
+            foreach (var value in enumerable) //The exception is only thrown here
+                Console.WriteLine(value);
+        });
     }
 
-    private static IEnumerable<int> Correct_Using_ExternalMethod(int count)
+    [TestMethod]
+    public void Correct_Using_ExternalMethod_WithBadParameter_ShouldThrowOnMethodCall()
     {
-        // This method throws the exception when the method is called,
-        // before any items are requested,
-        // which is idiomatic and preferred.
-        ArgumentOutOfRangeException.ThrowIfNegative(count);
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        {
+            var enumerable = Implementations.Correct_Using_ExternalMethod(BadCount); //The exception is already thrown here
 
-        // Call an external method to encapsulate the iterator logic.
-        return ExternalIteratorFunction(count);
+            Assert.Fail("This point in the code will/should not be reached");
+
+            foreach (var value in enumerable)
+                Console.WriteLine(value);
+        });
     }
 
-    private static IEnumerable<int> ExternalIteratorFunction(int count)
+    [TestMethod]
+    public void Correct_Using_LocalFunction_WithBadParameter_ShouldThrowOnMethodCall()
     {
-        for (var i = 0; i < count; i++)
-            yield return i;
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        {
+            var enumerable = Implementations.Correct_Using_LocalFunction(BadCount); //The exception is already thrown here
+
+            Assert.Fail("This point in the code will/should not be reached");
+
+            foreach (var value in enumerable)
+                Console.WriteLine(value);
+        });
     }
 }
