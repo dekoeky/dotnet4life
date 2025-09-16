@@ -11,4 +11,11 @@ public class GreetingsTests
         // ---------- ACT --------------
         Greetings.HelloFrom("Unit Test");
     }
+
+    [TestMethod]
+    public void GeneratedAtUtc()
+    {
+        // ---------- ACT --------------
+        Console.WriteLine($"{nameof(Greetings.GeneratedAtUtc)}: {Greetings.GeneratedAtUtc:O}");
+    }
 }
