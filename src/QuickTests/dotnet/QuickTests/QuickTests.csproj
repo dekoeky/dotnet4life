@@ -13,6 +13,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="CsvHelper" Version="33.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.5" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.5" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.5" />
@@ -36,6 +37,8 @@
   <ItemGroup>
     <Folder Include="OperatingSystem\Linux\" />
     <Folder Include="OperatingSystem\Windows\" />
+    <Folder Include="ThirdParty\CsvHelper\Configuration\" />
+    <Folder Include="ThirdParty\CsvHelper\AttributeMapping\" />
   </ItemGroup>
 
   <ItemGroup>
