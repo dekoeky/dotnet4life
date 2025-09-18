@@ -9,6 +9,9 @@ namespace QuickTests.DependencyInjection;
 [TestClass]
 public class DependencyInjectionBasics
 {
+    [TestInitialize]
+    public void Initialize() => MyDependency.ResetInstancesCreated();
+
     [TestMethod]
     public void SingletonServiceAsSelf()
     {
@@ -60,7 +63,7 @@ public class DependencyInjectionBasics
     {
         // ---------- ARRANGE ----------
         var services = new ServiceCollection()
-            .AddSingleton<MyDependency>(f => new MyDependency("Created using implementationFactory"));
+            .AddSingleton<MyDependency>(_ => new MyDependency("Created using implementationFactory"));
 
         // ---------- ACT --------------
         using var serviceProvider = services.BuildServiceProvider();
@@ -74,7 +77,7 @@ public class DependencyInjectionBasics
         Assert.IsInstanceOfType<MyDependency>(second, out var s);
         Assert.AreSame(f, s, $"{nameof(first)} and {nameof(second)} are not the same reference, making the service NOT a singleton");
         Assert.AreEqual(1, MyDependency.InstancesCreated, $"More than one {nameof(MyDependency)} instance created");
-        Assert.IsTrue(f.ParameterlessConstructorUsed, $"{nameof(first)} was created without the parameterless constructor");
-        Assert.IsTrue(s.ParameterlessConstructorUsed, $"{nameof(first)} was created without the parameterless constructor");
+        Assert.IsFalse(f.ParameterlessConstructorUsed, $"{nameof(first)} was created with the parameterless constructor");
+        Assert.IsFalse(s.ParameterlessConstructorUsed, $"{nameof(first)} was created with the parameterless constructor");
     }
 }
