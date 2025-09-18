@@ -7,16 +7,25 @@ namespace QuickTests.Reflection;
 /// Demonstrates calling static interface methods, on implementing types (via reflection).
 /// </summary>
 [TestClass]
+[DoNotParallelize]
 public class StaticInterfaceMethodsViaReflection
 {
+    [TestInitialize]
+    public void Initialize()
+    {
+        TestType.Called = false;
+    }
+
     [TestMethod]
     public void MethodC_StaticMethodOnType()
     {
         //Arrange
-        var type = typeof(TestType);
-        var method = type.GetMethod(nameof(TestType.MethodC),
-                         BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+        const BindingFlags flags = BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
+        var method = typeof(TestType).GetMethod(nameof(TestType.MethodC), flags)
                      ?? throw new InvalidOperationException("Could not get method");
+
+        //Pre-Assert
+        Assert.IsFalse(TestType.Called);
 
         //Act
         method.Invoke(null, null);
@@ -29,10 +38,12 @@ public class StaticInterfaceMethodsViaReflection
     public void MethodA_ViaImplicitInterfaceImplementation()
     {
         //Arrange
-        var type = typeof(TestType);
-        var method = type.GetMethod(nameof(TestType.MethodA),
-                         BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+        const BindingFlags flags = BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
+        var method = typeof(TestType).GetMethod(nameof(TestType.MethodA), flags)
                      ?? throw new InvalidOperationException("Could not get method");
+
+        //Pre-Assert
+        Assert.IsFalse(TestType.Called);
 
         //Act
         method.Invoke(null, null);
@@ -49,6 +60,9 @@ public class StaticInterfaceMethodsViaReflection
         var interfaceMapping = type.GetInterfaceMap(typeof(IA));
         var targetMethod = interfaceMapping.TargetMethods.First();
 
+        //Pre-Assert
+        Assert.IsFalse(TestType.Called);
+
         //Act
         targetMethod.Invoke(null, null);
 
@@ -63,6 +77,9 @@ public class StaticInterfaceMethodsViaReflection
         var type = typeof(TestType);
         var interfaceMapping = type.GetInterfaceMap(typeof(IB));
         var targetMethod = interfaceMapping.TargetMethods.First();
+
+        //Pre-Assert
+        Assert.IsFalse(TestType.Called);
 
         //Act
         targetMethod.Invoke(null, null);
