@@ -1,4 +1,5 @@
 using SharedLibrary.Techorama._2025;
+using System.Diagnostics;
 
 namespace QuickTests.Techorama._2025;
 
@@ -11,23 +12,28 @@ namespace QuickTests.Techorama._2025;
 public class CustomAwaiterTests
 {
     [TestMethod]
-    public async Task Await_A_String()
+    [DataRow("Hello World!")]
+    public async Task Await_A_String(string myString)
     {
         //ARRANGE
-        string? myString = "Hello World!";
-        var expected = TimeSpan.FromMilliseconds(myString?.Length * 100 ?? 0);
+        const double tolerance = 0.1d; //10%
+        const int delayPerLetter = 100;
+        var expectedMs = myString.Length * delayPerLetter;
+        var toleranceMs = expectedMs * tolerance;
+        var toleranceLow = expectedMs - toleranceMs;
+        var toleranceHigh = expectedMs + toleranceMs;
 
         //ACT
-        var before = DateTime.Now;
+        var start = Stopwatch.GetTimestamp();
         await myString;
-        var after = DateTime.Now;
-        var took = after - before;
+        var tookMilliseconds = Stopwatch.GetElapsedTime(start).TotalMilliseconds;
+
 
         //ASSERT
-        Console.WriteLine($"Before  : {before:O}");
-        Console.WriteLine($"After   : {after:O}");
-        Console.WriteLine($"Took    : {took:G}");
-        Console.WriteLine($"Expected: {expected:G}");
-        Assert.IsTrue(took >= expected);
+        Console.WriteLine($"Input:     {myString} ({myString.Length} characters)");
+        Console.WriteLine($"Took:      {tookMilliseconds:0}");
+        Console.WriteLine($"Expected:  {expectedMs:0}");
+        Console.WriteLine($"Tolerance: {tolerance:P} / {toleranceMs:0}ms ({toleranceLow:0}ms - {toleranceHigh:0}ms)");
+        Assert.AreEqual(expectedMs, tookMilliseconds, toleranceMs);
     }
 }

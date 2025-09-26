@@ -2,9 +2,20 @@ using System.Runtime.CompilerServices;
 
 namespace SharedLibrary.Techorama._2025;
 
-public class CustomStringAwaiter(string? s) : ICriticalNotifyCompletion
+public class CustomStringAwaiter : ICriticalNotifyCompletion
 {
-    private readonly TaskAwaiter _awaiter = Task.Delay(TimeSpan.FromMilliseconds(s?.Length ?? 0) * 100).GetAwaiter();
+    private const int DelayPerCharacter = 100;
+
+    private static readonly TaskAwaiter Completed = Task.CompletedTask.GetAwaiter();
+    private readonly TaskAwaiter _awaiter;
+
+    public CustomStringAwaiter(string? s)
+    {
+        var delay = (s?.Length ?? 0) * DelayPerCharacter;
+        _awaiter = delay > 0
+            ? Task.Delay(delay).GetAwaiter()
+            : Completed;
+    }
 
     public void OnCompleted(Action continuation) => _awaiter.OnCompleted(continuation);
 
