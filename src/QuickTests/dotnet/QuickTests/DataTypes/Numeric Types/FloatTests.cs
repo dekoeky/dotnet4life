@@ -10,6 +10,38 @@ public class FloatTests : NumericTestsBase<float>
 {
     //TODO: Add check to see if numbers can be represented as float, such as 123456789f --> Becomes 123456790f
 
+
+    [TestMethod]
+    [DataRow(360)]
+    [DataRow(359.99997f)]
+    public void FormattingDemo(float value)
+    {
+        // ---------- ACT --------------
+        Console.WriteLine($"No Format ():     {value}");
+        Console.WriteLine($"Round-Trip (R):   {value:R}");
+        Console.WriteLine($"Exponential (E):  {value:E}");
+
+        Console.WriteLine();
+        Console.WriteLine($"Fixed Point (F):  {value:F}");
+        Console.WriteLine($"Fixed Point (F1): {value:F1}");
+        Console.WriteLine($"Fixed Point (F2): {value:F2}");
+        Console.WriteLine($"Fixed Point (F3): {value:F3}");
+        Console.WriteLine($"Fixed Point (F4): {value:F4}");
+        Console.WriteLine($"Fixed Point (F5): {value:F5}");
+        Console.WriteLine($"Fixed Point (F6): {value:F6}");
+        Console.WriteLine($"Fixed Point (F7): {value:F7}");
+
+        Console.WriteLine();
+        Console.WriteLine($"Fixed Point (G):  {value:G}");
+        Console.WriteLine($"Fixed Point (g2): {value:g2}");
+        Console.WriteLine($"Fixed Point (g3): {value:g3}");
+        Console.WriteLine($"Fixed Point (g4): {value:g4}");
+        Console.WriteLine($"Fixed Point (g5): {value:g5}");
+        Console.WriteLine($"Fixed Point (g6): {value:g6}");
+        Console.WriteLine($"Fixed Point (g7): {value:g7}");
+    }
+
+
     [DataTestMethod]
     [DataRow(+MathF.PI)]
     [DataRow(-MathF.PI)]
