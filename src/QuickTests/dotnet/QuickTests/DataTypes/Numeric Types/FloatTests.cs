@@ -1,4 +1,7 @@
-﻿namespace QuickTests.DataTypes.Numeric_Types;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+
+namespace QuickTests.DataTypes.Numeric_Types;
 
 /// <summary>
 /// <see cref="float"/> related tests.
@@ -32,15 +35,76 @@ public class FloatTests : NumericTestsBase<float>
         Console.WriteLine($"Fixed Point (F7): {value:F7}");
 
         Console.WriteLine();
-        Console.WriteLine($"Fixed Point (G):  {value:G}");
-        Console.WriteLine($"Fixed Point (g2): {value:g2}");
-        Console.WriteLine($"Fixed Point (g3): {value:g3}");
-        Console.WriteLine($"Fixed Point (g4): {value:g4}");
-        Console.WriteLine($"Fixed Point (g5): {value:g5}");
-        Console.WriteLine($"Fixed Point (g6): {value:g6}");
-        Console.WriteLine($"Fixed Point (g7): {value:g7}");
+        Console.WriteLine($"General (G):  {value:G}");
+        Console.WriteLine($"General (g2): {value:g2}");
+        Console.WriteLine($"General (g3): {value:g3}");
+        Console.WriteLine($"General (g4): {value:g4}");
+        Console.WriteLine($"General (g5): {value:g5}");
+        Console.WriteLine($"General (g6): {value:g6}");
+        Console.WriteLine($"General (g7): {value:g7}");
     }
 
+
+    [TestMethod]
+    [DataRow(0.1f)]
+    [DataRow(1.2345679f)]
+    [DataRow(float.Epsilon)]
+    [DataRow(float.MaxValue)]
+    [DataRow(123456.987654321f)]
+    [SuppressMessage("ReSharper", "RedundantStringInterpolation", Justification = "Easier Table Formatting")]
+    [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Exact bitwise equality required")]
+    public void RoundTripDemo(float value)
+    {
+        // ---------- ARRANGE ----------
+        var culture = CultureInfo.InvariantCulture;
+
+        // ---------- ACT --------------
+        // No format: Same as 'G'
+        var toString = value.ToString(null, culture);
+
+        // https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings#general-format-specifier-g
+        // 'G' Format meaning:
+        // - dotnet (core) 2+: print the shortest round-trippable string for this value
+        // - dotnet framework: G7 https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings#general-format-specifier-g
+        var toStringG = value.ToString("G", culture);
+
+        // Default format, on .NET Framework
+        var toStringG7 = value.ToString("G7", culture);
+
+        //Equal to R format, and also more performant
+        var toStringG9 = value.ToString("G9", culture);
+        var toStringR = value.ToString("R", culture);
+
+        //Parse each formatted string back to a float value
+        var parsedValue = float.Parse(toString, culture);
+        var parsedValueG = float.Parse(toStringG, culture);
+        var parsedValueG7 = float.Parse(toStringG7, culture);
+        var parsedValueG9 = float.Parse(toStringG9, culture);
+        var parsedValueR = float.Parse(toStringR, culture);
+
+        //Check each round trip, whether it caused the exact same value
+        var wasRoundTrippable = parsedValue == value;
+        var wasRoundTrippableG = parsedValueG == value;
+        var wasRoundTrippableG7 = parsedValueG7 == value;
+        var wasRoundTrippableG9 = parsedValueG9 == value;
+        var wasRoundTrippableR = parsedValueR == value;
+
+        // ---------- ASSERT -----------
+        Console.WriteLine($"Format  Result");
+        Console.WriteLine($"(null)  {toString}");
+        Console.WriteLine($"G       {toStringG}");
+        Console.WriteLine($"G7      {toStringG7}");
+        Console.WriteLine($"G9      {toStringG9}");
+        Console.WriteLine($"R       {toStringR}");
+
+        Console.WriteLine();
+        Console.WriteLine($"Format  Result");
+        Console.WriteLine($"(null)  {wasRoundTrippable}");
+        Console.WriteLine($"G       {wasRoundTrippableG}");
+        Console.WriteLine($"G7      {wasRoundTrippableG7}");
+        Console.WriteLine($"G9      {wasRoundTrippableG9}");
+        Console.WriteLine($"R       {wasRoundTrippableR}");
+    }
 
     [DataTestMethod]
     [DataRow(+MathF.PI)]
