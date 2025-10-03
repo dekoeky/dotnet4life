@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11018.127 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET", ".NET", "{79120BB5-7395-B9EE-4BB5-58082D0F308B}"
 EndProject
@@ -72,6 +72,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintTimeZoneInfo", "docker\timezones\PrintTimeZoneInfo\PrintTimeZoneInfo.csproj", "{0522A4D7-26DF-47E3-8E24-F1C210A7A210}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeZones", "TimeZones", "{4008DDF8-3E57-43E2-945C-CE73BDCC623F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTargetTests", "dotnet\MultiTargetTests\MultiTargetTests.csproj", "{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -359,6 +361,18 @@ Global
 		{0522A4D7-26DF-47E3-8E24-F1C210A7A210}.Release|x64.Build.0 = Release|Any CPU
 		{0522A4D7-26DF-47E3-8E24-F1C210A7A210}.Release|x86.ActiveCfg = Release|Any CPU
 		{0522A4D7-26DF-47E3-8E24-F1C210A7A210}.Release|x86.Build.0 = Release|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Debug|x64.Build.0 = Debug|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Debug|x86.Build.0 = Debug|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Release|x64.ActiveCfg = Release|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Release|x64.Build.0 = Release|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Release|x86.ActiveCfg = Release|Any CPU
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -393,6 +407,7 @@ Global
 		{9E9D1605-96D1-4339-96E9-247669FDDBED} = {79120BB5-7395-B9EE-4BB5-58082D0F308B}
 		{0522A4D7-26DF-47E3-8E24-F1C210A7A210} = {4008DDF8-3E57-43E2-945C-CE73BDCC623F}
 		{4008DDF8-3E57-43E2-945C-CE73BDCC623F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{9B4CBDAE-42E3-433C-9D13-CE5CDFFABD8B} = {79120BB5-7395-B9EE-4BB5-58082D0F308B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AF3C4331-905D-4C89-B62B-38C11ADC3549}

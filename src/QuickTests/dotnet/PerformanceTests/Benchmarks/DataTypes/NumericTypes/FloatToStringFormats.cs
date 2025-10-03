@@ -10,10 +10,10 @@ public class FloatToStringFormats
     public float Value;
 
     [Params(null, "G", "G7", "G9", "R")]
-    public string Format;
+    public string? Format;
 
     private readonly IFormatProvider _culture = CultureInfo.InvariantCulture;
 
     [Benchmark]
-    public string FloatToString() => Value.ToString(Format, _culture);
+    public string FloatToStringWithFormat() => Value.ToString(Format, _culture);
 }
