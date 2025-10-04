@@ -1,53 +1,45 @@
 ﻿using System.Text.Json;
 
-namespace QuickTests.Json.TypeSpecific
+namespace QuickTests.Json.TypeSpecific;
+
+[TestClass]
+public class BooleanJsonTests
 {
-    [TestClass]
-    public class BooleanJsonTests
+    [TestMethod]
+    [DataRow("true", true)]
+    [DataRow("false", false)]
+    [DataRow("True")]
+    [DataRow("False")]
+    [DataRow("0")]
+    [DataRow("1")]
+    public void Deserialize(string json, bool? expectedResult = null)
     {
-        [DataTestMethod]
-        [DataRow("true")]
-        [DataRow("false")]
+        //Arrange
+        var expectedToFail = expectedResult is null;
 
-        public void DeSerialize_ShouldWork(string value) => Execute(value);
-
-        [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
-        [DataTestMethod]
-        [DataRow("True")]
-        [DataRow("False")]
-        [DataRow("\"True\"")]
-        [DataRow("\"False\"")]
-        [DataRow("0")]
-        [DataRow("0.0")]
-        [DataRow("1")]
-        [DataRow("1.0")]
-        [DataRow("2")]
-        [DataRow("2.0")]
-        public void DeSerialize_ShouldFail(string value) => Execute(value);
-
-        private static void Execute(string value)
+        try
         {
-            //Arrange
-            var json =
-                $$"""
-                  {
-                      "MyBool": {{value}}
-                  }
-                  """;
-            Console.WriteLine(json);
-
             //Act
-            var parsedValue = bool.Parse(value);
-            var jsonDeserialized = JsonSerializer.Deserialize<MyPoco>(json);
+            var result = JsonSerializer.Deserialize<bool>(json);
 
             //Assert
-            Console.WriteLine($"Result from bool.Parse :{parsedValue}");
-            Console.WriteLine($"Result from Json Deserialization: {jsonDeserialized?.MyBool}");
+            Assert.AreEqual(expectedResult, result);
         }
-
-        private class MyPoco
+        catch (JsonException)
         {
-            public bool MyBool { get; init; }
+            if (!expectedToFail) throw;
         }
+    }
+
+    [TestMethod]
+    [DataRow(true, "true")]
+    [DataRow(false, "false")]
+    public void Serialize(bool value, string expectedJson)
+    {
+        //Act
+        var json = JsonSerializer.Serialize(value);
+
+        //Assert
+        Assert.AreEqual(expectedJson, json);
     }
 }
