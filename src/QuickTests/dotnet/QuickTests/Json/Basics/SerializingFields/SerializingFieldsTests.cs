@@ -69,7 +69,7 @@ public class SerializingFieldsTests
 
         //Assert
         Console.WriteLine(json);
-        Assert.AreEqual(ExpectedJson, json);
+        Assert.AreEqual(ExpectedJson.ReplaceLineEndings(), json.ReplaceLineEndings());
     }
 
     [TestMethod]
@@ -94,7 +94,7 @@ public class SerializingFieldsTests
 
         //Assert
         Console.WriteLine(json);
-        Assert.AreEqual(ExpectedJson, json);
+        Assert.AreEqual(ExpectedJson.ReplaceLineEndings(), json.ReplaceLineEndings());
     }
 
     [TestMethod]

@@ -52,6 +52,9 @@ public class IndexBaseExampleTests
                         $"{actualCsv}{Environment.NewLine}");
 
         // ---------- ASSERT -----------
-        Assert.AreEqual(expectedCsv.Trim(), actualCsv.Trim()); //Usually not a good idea, however, for this test we tailored our testdata
+        //Cleanup data before comparison
+        expectedCsv = expectedCsv.Trim().ReplaceLineEndings();
+        actualCsv = actualCsv.Trim().ReplaceLineEndings();
+        Assert.AreEqual(expectedCsv, actualCsv); //Usually not a good idea, however, for this test we tailored our testdata
     }
 }
