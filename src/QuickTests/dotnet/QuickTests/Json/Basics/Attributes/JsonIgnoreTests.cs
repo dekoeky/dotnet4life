@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using QuickTests._Helpers.TestExtensions;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace QuickTests.Json.Basics.Attributes;
 
@@ -14,24 +16,42 @@ public class JsonIgnoreTests
     [TestMethod]
     public void Serialize()
     {
-        ////Arrange
-        //var definition = new IoDefinition
-        //{
+        //Arrange
+        var data = new MyData { A = 1, B = 2, };
 
-        //};
+        //Act
+        var json = JsonSerializer.Serialize(data, _options);
 
-        ////Act
-        //var json = JsonSerializer.Serialize(definitions, _options);
-
-        ////Assert
-        //Console.WriteLine(json);
+        //Assert
+        Console.WriteLine(json);
+        var ja = Assert.That.IsJson(json);
+        ja.ContainsProperty("A");
+        ja.DoesNotContainProperties("B", "b");
     }
 
-
-
-    private class IoDefinition
+    [TestMethod]
+    public void Deserialize()
     {
+        //Arrange
+        const string json = """
+                   {
+                     "A": 10,
+                     "B": 20
+                   }
+                   """;
 
-        //[JsonIgnore(Condition)] public string lksqdhjqldshdsq { get; set; } = "YO";
+        //Act
+        var data = JsonSerializer.Deserialize<MyData>(json, _options);
+
+        //Assert
+        Assert.IsNotNull(data);
+        Assert.AreEqual(10, data.A);
+        Assert.AreNotEqual(20, data.B);
+    }
+
+    private record MyData
+    {
+        public int A { get; init; }
+        [JsonIgnore] public int B { get; init; }
     }
 }
