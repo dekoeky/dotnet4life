@@ -23,13 +23,16 @@ internal sealed class MyIndexRowTestDataAttribute : Attribute, ITestDataSource
                                       5
                                       """;
 
-    private static readonly MyIndexRow[] PocoZeroBased = Enumerable.Range(0, 5)
-        .Select(i => new MyIndexRow { Index = i })
-        .ToArray();
+    private static readonly MyIndexRow[] PocoZeroBased = [
+        .. Enumerable.Range(0, 5)
+            .Select(i => new MyIndexRow { Index = i })
+    ];
 
-    private static readonly MyIndexRow[] PocoOneBased = Enumerable.Range(1, 5)
-        .Select(i => new MyIndexRow { Index = i })
-        .ToArray();
+    private static readonly MyIndexRow[] PocoOneBased =
+    [
+        .. Enumerable.Range(1, 5)
+            .Select(i => new MyIndexRow { Index = i })
+    ];
 
     public IEnumerable<object?[]> GetData(MethodInfo methodInfo)
     {
@@ -40,7 +43,7 @@ internal sealed class MyIndexRowTestDataAttribute : Attribute, ITestDataSource
     }
 
     public string? GetDisplayName(MethodInfo methodInfo, object?[]? data) =>
-        data is not [string csv, MyIndexRow[] expected, IndexBase file, IndexBase poco]
+        data is not [string, MyIndexRow[], IndexBase file, IndexBase poco]
             ? throw new InvalidOperationException()
             : $"{methodInfo.Name} (File: {file} / Data: {poco})";
 }

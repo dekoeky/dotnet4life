@@ -1,4 +1,4 @@
-// ReSharper disable ArrangeThisQualifier
+
 namespace QuickTests;
 
 [TestClass]
@@ -60,9 +60,9 @@ public class MemberwiseCloneTests
 
     private class DemoData
     {
-        public string Message { get; init; }
+        public string? Message { get; init; }
         public int Number { get; init; }
-        public DemoNestedData NestedObject { get; init; }
+        public required DemoNestedData NestedObject { get; init; }
         public DateTime Timestamp { get; init; }
 
         public DemoData ShallowCopy() => (DemoData)MemberwiseClone();
@@ -70,7 +70,7 @@ public class MemberwiseCloneTests
 
     private class DemoNestedData
     {
-        public string InnerMessage { get; set; }
+        public string? InnerMessage { get; set; }
     }
 }
 

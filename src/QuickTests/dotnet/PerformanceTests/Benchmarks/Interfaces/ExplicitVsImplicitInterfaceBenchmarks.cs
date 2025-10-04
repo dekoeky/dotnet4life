@@ -6,34 +6,34 @@ namespace PerformanceTests.Benchmarks.Interfaces;
 [MemoryDiagnoser]
 public class ExplicitVsImplicitInterfaceBenchmarks
 {
-    private ImplicitIntAdder @implicit;
-    private ExplicitIntAdder @explicit;
-    private IIntAdder iImplicit;
-    private IIntAdder iExplicit;
-    private IIntAdder iExplicitOnly;
+    private ImplicitIntAdder _implicit = null!;
+    private ExplicitIntAdder _explicit = null!;
+    private IIntAdder _iImplicit = null!;
+    private IIntAdder _iExplicit = null!;
+    private IIntAdder _iExplicitOnly = null!;
 
     [GlobalSetup]
     public void Setup()
     {
-        @implicit = new();
-        @explicit = new();
-        iImplicit = @implicit;
-        iExplicit = @explicit;
-        iExplicitOnly = new ExplicitOnlyIntAdder();
+        _implicit = new ImplicitIntAdder();
+        _explicit = new ExplicitIntAdder();
+        _iImplicit = _implicit;
+        _iExplicit = _explicit;
+        _iExplicitOnly = new ExplicitOnlyIntAdder();
     }
 
     [Params(1)]
-    public int a;
+    public int A;
 
     [Params(2)]
-    public int b;
+    public int B;
 
 
-    [Benchmark] public int Implicit() => @implicit.Add(a, b);
-    [Benchmark] public int Explicit() => @explicit.Add(a, b);
-    [Benchmark] public int IImplicit() => iImplicit.Add(a, b);
-    [Benchmark] public int IExplicit() => iExplicit.Add(a, b);
-    [Benchmark] public int IExplicitOnly() => iExplicitOnly.Add(a, b);
+    [Benchmark] public int Implicit() => _implicit.Add(A, B);
+    [Benchmark] public int Explicit() => _explicit.Add(A, B);
+    [Benchmark] public int IImplicit() => _iImplicit.Add(A, B);
+    [Benchmark] public int IExplicit() => _iExplicit.Add(A, B);
+    [Benchmark] public int IExplicitOnly() => _iExplicitOnly.Add(A, B);
 
     // * Summary *
 
@@ -44,7 +44,7 @@ public class ExplicitVsImplicitInterfaceBenchmarks
     //DefaultJob : .NET 9.0.8 (9.0.825.36511), X64 RyuJIT AVX2
 
 
-    //| Method        | a | b | Mean      | Error     | StdDev    | Median    | Allocated |
+    //| Method        | A | B | Mean      | Error     | StdDev    | Median    | Allocated |
     //|-------------- |-- |-- |----------:|----------:|----------:|----------:|----------:|
     //| Implicit      | 1 | 2 | 0.0060 ns | 0.0081 ns | 0.0165 ns | 0.0000 ns |         - |
     //| Explicit      | 1 | 2 | 0.0371 ns | 0.0230 ns | 0.0291 ns | 0.0304 ns |         - |

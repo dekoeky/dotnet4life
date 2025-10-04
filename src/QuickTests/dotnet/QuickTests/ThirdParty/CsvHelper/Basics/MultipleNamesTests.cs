@@ -30,7 +30,7 @@ public class MultipleNamesTests
                                 2,50,Spiderman
                                 """;
 
-    private Poco[] _expected =
+    private readonly Poco[] _expected =
     [
         new () { Id = 1, MyAge = 20, MyName = "Batman", },
         new () { Id = 2, MyAge = 50, MyName = "Spiderman", },
@@ -73,16 +73,16 @@ public class MultipleNamesTests
 
     private record Poco
     {
-        public int Id { get; set; }
+        public int Id { get; init; }
 
         [Name("my-name", "my_name")]
-        public string MyName { get; init; }
+        public required string MyName { get; init; }
 
         [Name("my-age", "my_age")]
         public int MyAge { get; init; }
     }
 
-    private class PocoClassMap : ClassMap<Poco>
+    private sealed class PocoClassMap : ClassMap<Poco>
     {
         public PocoClassMap()
         {

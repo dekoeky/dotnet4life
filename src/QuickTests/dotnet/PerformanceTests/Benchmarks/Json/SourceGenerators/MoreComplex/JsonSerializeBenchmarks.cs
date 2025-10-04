@@ -9,7 +9,7 @@ public class JsonSourceGeneratedSerializedBenchmarks
 {
     private static readonly List<Customer> Customers = GenerateSampleData(1000);
     private static readonly JsonSerializerOptions DefaultOptions = JsonSerializerOptions.Default;
-    private string json;
+    private string _json = null!;
 
 
     [GlobalSetup]
@@ -19,7 +19,7 @@ public class JsonSourceGeneratedSerializedBenchmarks
         using var stream = assembly.GetManifestResourceStream("PerformanceTests.Benchmarks.Json.SourceGenerators.MoreComplex.testdata.json")
             ?? throw new InvalidOperationException("Can't load testdata");
         using var streamReader = new StreamReader(stream);
-        json = streamReader.ReadToEnd();
+        _json = streamReader.ReadToEnd();
     }
 
     [Benchmark]
@@ -29,10 +29,10 @@ public class JsonSourceGeneratedSerializedBenchmarks
     public string SerializeSourceGenerated() => JsonSerializer.Serialize(Customers, CustomerJsonContext.Default.ListCustomer);
 
     [Benchmark]
-    public List<Customer>? DeserializeDefault() => JsonSerializer.Deserialize<List<Customer>>(json, DefaultOptions);
+    public List<Customer>? DeserializeDefault() => JsonSerializer.Deserialize<List<Customer>>(_json, DefaultOptions);
 
     [Benchmark]
-    public List<Customer>? DeserializeSourceGenerated() => JsonSerializer.Deserialize(json, CustomerJsonContext.Default.ListCustomer);
+    public List<Customer>? DeserializeSourceGenerated() => JsonSerializer.Deserialize(_json, CustomerJsonContext.Default.ListCustomer);
 
 
     private static List<Customer> GenerateSampleData(int count)

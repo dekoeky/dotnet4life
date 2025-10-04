@@ -11,54 +11,54 @@ namespace PerformanceTests.Benchmarks.Logging.LogMessages;
 public class LoggerMessageTests
 {
     [Params("Kendrick")]
-    public string Name;
+    public string Name = null!;
 
     [Params("Compton")]
-    public string City;
+    public string City = null!;
 
     [ParamsAllValues]
     public bool LoggerEnabled;
 
-    private Resident resident;
-    private ILoggerFactory loggerFactory;
-    private ILogger logger;
+    private Resident _resident = null!;
+    private ILoggerFactory _loggerFactory = null!;
+    private ILogger _logger = null!;
 
     [GlobalSetup]
     public void Setup()
     {
-        resident = new Resident
+        _resident = new Resident
         {
             Name = Name,
             CityOfResidence = City,
         };
 
         //Create a logger factory, that creates loggers that will log Json formatted messages to the console
-        loggerFactory = LoggerFactory.Create(builder =>
+        _loggerFactory = LoggerFactory.Create(builder =>
            builder.AddProvider(new NoopProvider(LoggerEnabled)));
 
         //Create a logger
-        logger = loggerFactory.CreateLogger<LoggerMessageTests>();
+        _logger = _loggerFactory.CreateLogger<LoggerMessageTests>();
     }
 
     [GlobalCleanup]
     public void CleanUp()
     {
-        loggerFactory.Dispose();
+        _loggerFactory.Dispose();
     }
 
     [Benchmark]
     public void SourceGenerated_Properties()
-        => logger.CityOfResidenceSourceGenerated(Name, City);
+        => _logger.CityOfResidenceSourceGenerated(Name, City);
 
     [Benchmark]
     public void SourceGenerated_Poco()
-        => logger.CityOfResidenceSourceGenerated(resident);
+        => _logger.CityOfResidenceSourceGenerated(_resident);
 
     [Benchmark]
     public void Simple_Properties()
-        => logger.CityOfResidenceSimple(Name, City);
+        => _logger.CityOfResidenceSimple(Name, City);
 
     [Benchmark]
     public void Simple_Poco()
-        => logger.CityOfResidenceSimple(resident);
+        => _logger.CityOfResidenceSimple(_resident);
 }

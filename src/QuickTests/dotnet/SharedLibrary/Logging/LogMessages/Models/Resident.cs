@@ -2,6 +2,6 @@
 
 public record Resident
 {
-    public string Name { get; set; }
-    public string CityOfResidence { get; set; }
+    public required string Name { get; set; }
+    public required string CityOfResidence { get; set; }
 }

@@ -6,7 +6,7 @@ public sealed class NoopProvider(bool enabled) : ILoggerProvider
 {
     private sealed class NoopLogger(bool enabled) : ILogger
     {
-        public IDisposable BeginScope<TState>(TState state) => default!;
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull => null;
         public bool IsEnabled(LogLevel logLevel) => enabled;
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception,
