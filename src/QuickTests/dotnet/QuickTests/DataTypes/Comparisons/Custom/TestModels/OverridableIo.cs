@@ -5,7 +5,6 @@ namespace QuickTests.DataTypes.Comparisons.Custom.TestModels;
 public class OverridableIo<T> where T : struct, IEquatable<T>, IEqualityOperators<T, T, bool>
 {
     private T _actualValue;
-    private T _finalValue;
     private T _overrideValue;
     private bool _isOverriden;
 
@@ -42,7 +41,7 @@ public class OverridableIo<T> where T : struct, IEquatable<T>, IEqualityOperator
         }
     }
 
-    public T FinalValue => _finalValue;
+    public T FinalValue { get; private set; }
 
-    private void UpdateFinalValue() => _finalValue = _isOverriden ? _overrideValue : _actualValue;
+    private void UpdateFinalValue() => FinalValue = _isOverriden ? _overrideValue : _actualValue;
 }

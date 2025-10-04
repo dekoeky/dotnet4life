@@ -125,7 +125,7 @@ public class FloatTests : NumericTestsBase<float>
         var sign = bits >> 31 == 0 ? 1 : -1;
 
         // Extract exponent (bits 23-30)
-        var exponent = (int)((bits >> 23) & 0b11111111);
+        var exponent = (bits >> 23) & 0b11111111;
         var actualExponent = exponent - 127; // IEEE 754 bias for floats
 
         // Extract fraction (mantissa) (23 bits)

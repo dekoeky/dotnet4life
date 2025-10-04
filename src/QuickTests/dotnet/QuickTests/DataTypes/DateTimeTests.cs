@@ -173,7 +173,7 @@ public class DateTimeTests
         {
             // For relative date rules, we need to calculate based on the week and day of the week
             var firstDayOfMonth = new DateTime(year, transitionTime.Month, 1);
-            var startOfWeek = firstDayOfMonth.AddDays(transitionTime.Week * 7 - 7);
+            var startOfWeek = firstDayOfMonth.AddDays((transitionTime.Week * 7) - 7);
 
             // Find the day in the correct week
             var daysToTargetDay = (7 - (int)startOfWeek.DayOfWeek + (int)transitionTime.DayOfWeek) % 7;
@@ -185,7 +185,8 @@ public class DateTimeTests
 
         return transitionDate;
     }
-    public static string ConvertToOrdinal(int number)
+
+    private static string ConvertToOrdinal(int number)
     {
         if (number < 0) throw new ArgumentOutOfRangeException(nameof(number), "Number must be non-negative.");
 

@@ -5,6 +5,7 @@
 // ReSharper disable EntityNameCapturedOnly.Local
 
 //An alias with a short and more readable name than the long original class name
+using System.Diagnostics.CodeAnalysis;
 using Ez = QuickTests.Generics.NameOfTests.SomeClassWithAnAnnoyingName;
 
 namespace QuickTests.Generics;
@@ -32,7 +33,7 @@ public class NameOfTests
             { "nameof(enum value)",                    nameof(SomeEnum.SomeEnumValue) },
             { "nameof(method)",                        nameof(SomeMethod) },
             { "nameof(static method)",                 nameof(SomeStaticMethod) },
-            { "nameof(namespace)",                     nameof(QuickTests.Generics)},
+            { "nameof(namespace)",                     nameof(Generics)},
             { "nameof(local method)",                  nameof(SomeLocalMethod) },
             { "nameof(local static method)",           nameof(SomeLocalStaticMethod) },
             { "nameof(method parameter)",              NameOfParameter("test") },
@@ -47,9 +48,14 @@ public class NameOfTests
 
         return;
 
+        // Local Methods
+
         void SomeLocalMethod() { }
+
         static void SomeLocalStaticMethod() { }
-        string NameOfLocalMethodParameter(string someParameter) => nameof(someParameter);
+
+        [SuppressMessage("ReSharper", "UnusedParameter.Local")]
+        static string NameOfLocalMethodParameter(string someParameter) => nameof(someParameter);
     }
 
     [TestMethod]

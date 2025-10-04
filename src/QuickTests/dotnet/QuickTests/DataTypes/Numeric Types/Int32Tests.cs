@@ -23,8 +23,8 @@ public class Int32Tests : NumericTestsBase<int>
     [DataRow(11)]
     [DataRow(255)]
     [DataRow(256)]
-    [DataRow(255 * 255 - 1)]
-    [DataRow(255 * 255)]
+    [DataRow(65024 /* 255 * 255 - 1 */)]
+    [DataRow(65025 /* 255 * 255 */)]
     [DataRow(int.MaxValue)]
     public void Explain(int value)
     {

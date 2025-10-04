@@ -45,14 +45,14 @@ public class ValueTimesTwoConverterViaFactoryTests
     /// <summary>
     /// A generic poco, that defines the JsonConverter attribute, without Generic Parameters (implicit)
     /// </summary>
-    private class Data<TA, TB>
-        where TA : INumber<TA>
-        where TB : INumber<TB>
+    private class Data<Ta, Tb>
+        where Ta : INumber<Ta>
+        where Tb : INumber<Tb>
     {
         [JsonConverter(typeof(ValueTimesTwoConverterFactory))]
-        public required TA Value { get; set; }
+        public required Ta Value { get; init; }
 
         [JsonConverter(typeof(ValueTimesTwoConverterFactory))]
-        public required TB FloatingValue { get; set; }
+        public required Tb FloatingValue { get; init; }
     }
 }

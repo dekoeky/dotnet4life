@@ -1,17 +1,22 @@
-﻿namespace QuickTests.DataTypes.Enums.BaseTypes;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace QuickTests.DataTypes.Enums.BaseTypes;
 
 [TestClass]
 public class EnumBaseTypeTest
 {
+    // ReSharper disable UnusedMember.Local
     [Flags]
     private enum ByteEnum : byte { A = 1, B = 2 }
     [Flags]
-    private enum IntEnum : int { A = 100, B = 200 }
+    private enum IntEnum /* : int */ { A = 100, B = 200 }
     [Flags]
     private enum LongEnum : long { A = 1000, B = 2000 }
+    // ReSharper restore UnusedMember.Local
 
 
     [TestMethod]
+    [SuppressMessage("ReSharper", "ConvertToConstant.Local")]
     public void CastToInt()
     {
         //Act
@@ -26,6 +31,7 @@ public class EnumBaseTypeTest
     }
 
     [TestMethod]
+    [SuppressMessage("ReSharper", "ConvertToConstant.Local")]
     public void CastFromInt()
     {
         //Arrange
@@ -34,9 +40,9 @@ public class EnumBaseTypeTest
         const int i3 = (int)LongEnum.A;
 
         //Act
-        const ByteEnum e1 = (ByteEnum)i1;
-        const IntEnum e2 = (IntEnum)i2;
-        const LongEnum e3 = (LongEnum)i3;
+        var e1 = (ByteEnum)i1;
+        var e2 = (IntEnum)i2;
+        var e3 = (LongEnum)i3;
 
         //Assert
         Assert.AreEqual(ByteEnum.A, e1);

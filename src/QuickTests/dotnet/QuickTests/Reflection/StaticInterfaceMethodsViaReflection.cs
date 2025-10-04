@@ -104,7 +104,7 @@ public class StaticInterfaceMethodsViaReflection
 
     private class TestType : IA, IB
     {
-        public static bool Called = false;
+        public static bool Called;
 
 
         public static void MethodA()

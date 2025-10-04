@@ -6,9 +6,6 @@ namespace QuickTests.Logging.Serilog;
 [TestClass]
 public class SerilogDemo
 {
-
-
-
     [TestMethod]
     public void Old()
     {

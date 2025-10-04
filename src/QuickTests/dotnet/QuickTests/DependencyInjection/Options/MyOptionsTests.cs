@@ -95,27 +95,21 @@ file record MyOptions
 
 file class MyOptionsValidate : IValidateOptions<MyOptions>
 {
-    public static int CallCount = 0;
     public ValidateOptionsResult Validate(string? name, MyOptions o)
     {
         Debug.WriteLine($"{nameof(MyOptionsValidate)}.{nameof(Validate)}() called");
 
-        if (string.IsNullOrEmpty(o.Ip))
-            return ValidateOptionsResult.Fail($"No {nameof(o.Ip)} provided");
-
-        if (!IPAddress.TryParse(o.Ip, out _))
-            return ValidateOptionsResult.Fail($"Invalid {nameof(o.Ip)} provided");
-
-
-
-        CallCount++;
-        return ValidateOptionsResult.Success;
+        return string.IsNullOrEmpty(o.Ip)
+            ? ValidateOptionsResult.Fail($"No {nameof(o.Ip)} provided")
+            : !IPAddress.TryParse(o.Ip, out _)
+                ? ValidateOptionsResult.Fail($"Invalid {nameof(o.Ip)} provided")
+                : ValidateOptionsResult.Success;
     }
 }
 
 file class MyOptionsPostConfigure : IPostConfigureOptions<MyOptions>
 {
-    public static int CallCount = 0;
+    public static int CallCount;
     public void PostConfigure(string? name, MyOptions myOptions)
     {
         Debug.WriteLine($"{nameof(MyOptionsPostConfigure)}.{nameof(PostConfigure)}() called");

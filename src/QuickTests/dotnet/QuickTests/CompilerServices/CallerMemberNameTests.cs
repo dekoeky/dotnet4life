@@ -9,10 +9,12 @@ public class CallerMemberNameTests
     public void FromPropertySetter()
     {
         // ---------- ARRANGE ----------
-        var helper = new MyHelper();
-
-        // ---------- ACT --------------
-        helper.MyProperty = "New Property Value";
+        var helper = new MyHelper
+        {
+            // ---------- ACT --------------
+            //Using the set (or in this case, the init-) accessor
+            MyProperty = "New Property Value"
+        };
 
         // ---------- ASSERT -----------
         Assert.AreEqual(nameof(helper.MyProperty), helper.LastCallerMemberName);

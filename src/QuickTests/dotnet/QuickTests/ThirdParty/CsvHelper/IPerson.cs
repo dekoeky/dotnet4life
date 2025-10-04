@@ -5,15 +5,15 @@ namespace QuickTests.ThirdParty.CsvHelper;
 /// </summary>
 public interface IPerson
 {
-    int Id { get; set; }
+    int Id { get; init; }
 
-    string FirstName { get; set; }
+    string FirstName { get; init; }
 
-    string LastName { get; set; }
+    string LastName { get; init; }
 
-    DateOnly BirthDate { get; set; }
+    DateOnly BirthDate { get; init; }
 
-    string Email { get; set; }
+    string Email { get; init; }
 
-    double Salary { get; set; }
+    double Salary { get; init; }
 }

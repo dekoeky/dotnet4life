@@ -18,10 +18,10 @@ public class JsonPropertyNameTests
         //Arrange
         IoDefinition[] definitions =
         [
-            new() { ThisIsAVeryLongNameThatYouWouldNotTypicallyWantToSendEverytimeYouSendAJsonMessage = 10, nummertje = 0 },
-            new() { ThisIsAVeryLongNameThatYouWouldNotTypicallyWantToSendEverytimeYouSendAJsonMessage = 20, nummertje = 0 },
-            new() { ThisIsAVeryLongNameThatYouWouldNotTypicallyWantToSendEverytimeYouSendAJsonMessage = 10, nummertje = 1 },
-            new() { ThisIsAVeryLongNameThatYouWouldNotTypicallyWantToSendEverytimeYouSendAJsonMessage = 20, nummertje = 1 },
+            new() { ThisIsAVeryLongNameThatYouWouldNotTypicallyWantToSendEverytimeYouSendAJsonMessage = 10, BitNumber = 0 },
+            new() { ThisIsAVeryLongNameThatYouWouldNotTypicallyWantToSendEverytimeYouSendAJsonMessage = 20, BitNumber = 0 },
+            new() { ThisIsAVeryLongNameThatYouWouldNotTypicallyWantToSendEverytimeYouSendAJsonMessage = 10, BitNumber = 1 },
+            new() { ThisIsAVeryLongNameThatYouWouldNotTypicallyWantToSendEverytimeYouSendAJsonMessage = 20, BitNumber = 1 },
         ];
         //Act
         var json = JsonSerializer.Serialize(definitions, _options);
@@ -35,12 +35,12 @@ public class JsonPropertyNameTests
 
     private class IoDefinition
     {
-        public const string NameForBitAddress = "b";
+        private const string NameForBitAddress = "b";
 
         [JsonPropertyName("n")] //Possible to use string
         public int ThisIsAVeryLongNameThatYouWouldNotTypicallyWantToSendEverytimeYouSendAJsonMessage { get; set; }
 
         [JsonPropertyName(NameForBitAddress)] //Possible to reference const
-        public byte nummertje { get; set; }
+        public byte BitNumber { get; set; }
     }
 }

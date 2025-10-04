@@ -3,6 +3,7 @@ using System.Numerics;
 
 namespace QuickTests;
 
+[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 internal static class AssertExtensions
 {
     public static void IsBetween<T>(this Assert assert, T min, T max, T actual, bool includeBounds) where T : IComparisonOperators<T, T, bool>

@@ -49,9 +49,9 @@ public class ValueTimesTwoConverterExplicitTests
     private class Data
     {
         [JsonConverter(typeof(ValueTimesTwoConverter<int>))]
-        public int IntegerValue { get; set; }
+        public int IntegerValue { get; init; }
 
         [JsonConverter(typeof(ValueTimesTwoConverter<double>))]
-        public double FloatingValue { get; set; }
+        public double FloatingValue { get; init; }
     }
 }

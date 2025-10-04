@@ -1,6 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
+
+
 namespace QuickTests.DataTypes.Nullable;
 
 [TestClass]
+[SuppressMessage("ReSharper", "ClassNeverInstantiated.Local")]
 public class NullableTests
 {
     [TestMethod]
@@ -10,6 +14,7 @@ public class NullableTests
         SomeClass? o = null;
 
         //Assert
+#pragma warning disable MSTEST0037
         Assert.IsTrue(o?.Boolean == null);
         Assert.IsTrue(o?.Boolean is null);
 
@@ -18,6 +23,7 @@ public class NullableTests
 
         Assert.IsTrue(o?.Boolean != true);
         Assert.IsTrue(o?.Boolean != false);
+#pragma warning restore MSTEST0037
     }
 
 

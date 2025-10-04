@@ -9,11 +9,10 @@ public class BoxingTests
     public void BoxedValue_ShouldEqual_OriginalValue()
     {
         //ARRANGE
-        var value = Value;
-        var boxedValue = (object)value; // Boxing
+        var boxedValue = (object)Value; // Boxing
 
         //ACT
-        var result = value.Equals(boxedValue);
+        var result = Value.Equals(boxedValue);
 
         //ASSERT
         Assert.IsTrue(result, "The boxed value should equal the original value.");
@@ -23,11 +22,10 @@ public class BoxingTests
     public void OriginalValue_ShouldEqual_BoxedValue()
     {
         //ARRANGE
-        var value = Value;
-        var boxedValue = (object)value; // Boxing
+        var boxedValue = (object)Value; // Boxing
 
         //ACT
-        var result = boxedValue.Equals(value);
+        var result = boxedValue.Equals(Value);
 
         //ASSERT
         Assert.IsTrue(result, "The original value should equal the boxed value.");
@@ -37,9 +35,8 @@ public class BoxingTests
     public void TwoBoxedValues_ShouldBeEqual()
     {
         //ARRANGE
-        var value = Value;
-        var boxedValue1 = (object)value; // Boxing
-        var boxedValue2 = (object)value; // Boxing
+        var boxedValue1 = (object)Value; // Boxing
+        var boxedValue2 = (object)Value; // Boxing
 
         //ACT
         var result = boxedValue1.Equals(boxedValue2);
@@ -52,11 +49,10 @@ public class BoxingTests
     public void BoxedValueHashCode_ShouldEqual_OriginalValueHashCode()
     {
         //ARRANGE
-        var value = Value;
-        var boxedValue = (object)value; // Boxing
+        var boxedValue = (object)Value; // Boxing
 
         //ACT
-        var valueHashCode = value.GetHashCode();
+        var valueHashCode = Value.GetHashCode();
         var boxedValueHashCode = boxedValue.GetHashCode();
 
         //ASSERT

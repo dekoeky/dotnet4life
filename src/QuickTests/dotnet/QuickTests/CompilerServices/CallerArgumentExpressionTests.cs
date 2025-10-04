@@ -67,7 +67,7 @@ public class CallerArgumentExpressionTests
     /// </summary>
     private class DataContainer
     {
-        public DataElement MyProperty { get; set; } = new();
+        public DataElement MyProperty { get; } = new();
     }
 
     /// <summary>

@@ -9,7 +9,7 @@ namespace QuickTests.Json.DerivedTypes.Example1;
 [TestClass]
 public class DerivedTypesTests
 {
-    private readonly JsonSerializerOptions jsonSerializerOptions = new()
+    private readonly JsonSerializerOptions _jsonSerializerOptions = new()
     {
         WriteIndented = true,
     };
@@ -18,7 +18,7 @@ public class DerivedTypesTests
     public void SerializeBase()
     {
         //Arrange
-        var data = new WeatherForecastBase()
+        var data = new WeatherForecastBase
         {
             Date = new DateTimeOffset(2025, 02, 17, 16, 35, 10, DateTimeOffset.Now.Offset),
             Summary = "Good Weather",
@@ -26,7 +26,7 @@ public class DerivedTypesTests
         };
 
         //Act
-        var json = JsonSerializer.Serialize(data, jsonSerializerOptions);
+        var json = JsonSerializer.Serialize(data, _jsonSerializerOptions);
 
         //Assert
         Console.WriteLine(json);
@@ -36,7 +36,7 @@ public class DerivedTypesTests
     public void SerializeWithCity()
     {
         //Arrange
-        var data = new WeatherForecastWithCity()
+        var data = new WeatherForecastWithCity
         {
             Date = new DateTimeOffset(2025, 02, 17, 16, 35, 10, DateTimeOffset.Now.Offset),
             Summary = "Good Weather",
@@ -45,7 +45,7 @@ public class DerivedTypesTests
         };
 
         //Act
-        var json = JsonSerializer.Serialize<WeatherForecastBase>(data, jsonSerializerOptions);
+        var json = JsonSerializer.Serialize<WeatherForecastBase>(data, _jsonSerializerOptions);
 
         //Assert
         Console.WriteLine(json);
@@ -65,7 +65,7 @@ public class DerivedTypesTests
                             """;
 
         //Act
-        var data = JsonSerializer.Deserialize<WeatherForecastBase>(json, jsonSerializerOptions);
+        var data = JsonSerializer.Deserialize<WeatherForecastBase>(json, _jsonSerializerOptions);
 
         //Assert
         Assert.IsNotNull(data);
@@ -87,7 +87,7 @@ public class DerivedTypesTests
                             """;
 
         //Act
-        var data = JsonSerializer.Deserialize<WeatherForecastBase>(json, jsonSerializerOptions);
+        var data = JsonSerializer.Deserialize<WeatherForecastBase>(json, _jsonSerializerOptions);
 
         //Assert
         Assert.IsNotNull(data);

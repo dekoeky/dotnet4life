@@ -76,7 +76,7 @@ public class MultipleHostedServicesTests
     private static async Task Test(Action<HostApplicationBuilder> configureServices, Action assert)
     {
         // ---------- ARRANGE ----------
-        var builder = Host.CreateEmptyApplicationBuilder(new HostApplicationBuilderSettings()
+        var builder = Host.CreateEmptyApplicationBuilder(new HostApplicationBuilderSettings
         {
             ApplicationName = "Unit Test",
             EnvironmentName = "UnitTest",
@@ -89,7 +89,7 @@ public class MultipleHostedServicesTests
         await Task.Delay(100);
 
         // ---------- ASSERT -----------
-        foreach (var (instance, runCount) in MyBackgroundService.Data) Console.WriteLine($"[{instance}] RunCount: {runCount}");
+        foreach (var (instance, runCount) in MyBackgroundService.DataReadOnly) Console.WriteLine($"[{instance}] RunCount: {runCount}");
         assert();
 
         // --------- CLEANUP -----------

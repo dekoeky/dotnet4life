@@ -9,7 +9,7 @@ public class CustomInterpolatedStringHandler
     public void LogInfoString()
     {
         //ARRANGE
-        var favoriteNumber = 15;
+        const int favoriteNumber = 15;
 
         //ACT
         LogInfoString($"My Favorite Number: {favoriteNumber}");
@@ -22,7 +22,7 @@ public class CustomInterpolatedStringHandler
     public void LogInfoMyInterpolatedStringHandler()
     {
         //ARRANGE
-        var favoriteNumber = 15;
+        const int favoriteNumber = 15;
 
         //ACT
         LogInfoMyInterpolatedStringHandler($"My Favorite Number: {favoriteNumber}");
@@ -31,12 +31,12 @@ public class CustomInterpolatedStringHandler
 
     }
 
-    public static void LogInfoMyInterpolatedStringHandler(MyInterpolatedStringHandler handler)
+    private static void LogInfoMyInterpolatedStringHandler(MyInterpolatedStringHandler handler)
     {
         Console.WriteLine(handler.ToString());
     }
 
-    public static void LogInfoString(string message)
+    private static void LogInfoString(string message)
     {
         Console.WriteLine(message);
     }

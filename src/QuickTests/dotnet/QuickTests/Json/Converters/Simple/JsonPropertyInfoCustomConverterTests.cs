@@ -92,7 +92,7 @@ public class JsonPropertyInfoCustomConverterTests
         var data = new SimplePoco();
         var options = new JsonSerializerOptions(DefaultJsonSerializerOptions)
         {
-            TypeInfoResolver = new DefaultJsonTypeInfoResolver()
+            TypeInfoResolver = new DefaultJsonTypeInfoResolver
             {
                 Modifiers =
                 {
@@ -115,7 +115,7 @@ public class JsonPropertyInfoCustomConverterTests
         var data = new SimplePoco();
         var options = new JsonSerializerOptions(DefaultJsonSerializerOptions)
         {
-            TypeInfoResolver = new DefaultJsonTypeInfoResolver()
+            TypeInfoResolver = new DefaultJsonTypeInfoResolver
             {
                 Modifiers =
                 {
@@ -182,11 +182,11 @@ public class JsonPropertyInfoCustomConverterTests
         C,
     }
 
-    [JsonConverter(typeof(AlsText<MyEnumWithAttribute>))]
-    private enum MyEnumWithAttribute
-    {
-        A,
-        B,
-        C,
-    }
+    //[JsonConverter(typeof(AlsText<MyEnumWithAttribute>))]
+    //private enum MyEnumWithAttribute
+    //{
+    //    A,
+    //    B,
+    //    C,
+    //}
 }

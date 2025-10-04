@@ -1,3 +1,4 @@
+#pragma warning disable MSTEST0032
 namespace QuickTests.DataTypes.Enums.Flags;
 
 [TestClass]
@@ -7,7 +8,7 @@ public class FlagTests
     public void DefaultValueIsNone()
     {
         //Act
-        Permissions value = default;
+        const Permissions value = default;
 
         //Assert
         Assert.AreEqual(Permissions.None, value);

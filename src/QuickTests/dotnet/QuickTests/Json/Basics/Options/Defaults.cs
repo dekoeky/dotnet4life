@@ -47,9 +47,8 @@ public class Defaults
         var t = typeof(WeatherForecast);
 
         foreach (var options in optionsToBeTested)
-            if (options.TryGetTypeInfo(t, out _))
-                Console.WriteLine($"successfully retrieved TypeInfo for {t}");
-            else
-                Console.WriteLine($"failed to retrieve TypeInfo for {t}");
+            Console.WriteLine(options.TryGetTypeInfo(t, out _)
+                ? $"successfully retrieved TypeInfo for {t}"
+                : $"failed to retrieve TypeInfo for {t}");
     }
 }

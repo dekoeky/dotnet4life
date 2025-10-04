@@ -14,53 +14,23 @@ public class DerivedTypesTests
         WriteIndented = true,
     };
 
-    [TestMethod]
-    public void SerializeSetBitControlMessage()
+    private static IEnumerable<object[]> SerializeTestData()
     {
-        //Arrange
-        var data = new SetBitControlMessage
-        {
-            Bit = 32,
-            Value = true,
-        };
+        yield return [new SetBitControlMessage { Bit = 32, Value = true, }];
+        yield return [new SetFloatControlMessage { Name = "WantedTemperature", Value = 21.0f, }];
+        yield return [new RestartControlMessage()];
+    }
 
+    [TestMethod]
+    [DynamicData(nameof(SerializeTestData))]
+    public void Serialize(IControlMessage controlMessage)
+    {
         //Act
-        var json = JsonSerializer.Serialize<IControlMessage>(data, _jsonSerializerOptions);
+        var json = JsonSerializer.Serialize(controlMessage, _jsonSerializerOptions);
 
         //Assert
         Console.WriteLine(json);
     }
-
-    [TestMethod]
-    public void SetFloatControlMessage()
-    {
-        //Arrange
-        var data = new SetFloatControlMessage
-        {
-            Name = "WantedTemperature",
-            Value = 21.0f,
-        };
-
-        //Act
-        var json = JsonSerializer.Serialize<IControlMessage>(data, _jsonSerializerOptions);
-
-        //Assert
-        Console.WriteLine(json);
-    }
-
-    [TestMethod]
-    public void SerializeRestartControlMessage()
-    {
-        //Arrange
-        var data = new RestartControlMessage();
-
-        //Act
-        var json = JsonSerializer.Serialize<IControlMessage>(data, _jsonSerializerOptions);
-
-        //Assert
-        Console.WriteLine(json);
-    }
-
 
     [TestMethod]
     public void DeSerializeRestartControlMessage()
@@ -136,17 +106,8 @@ public class DerivedTypesTests
         }
     }
 
-
-
-
-
-
-
-
-
-
     [TestMethod]
-    public void DeSerializeRestartControlMessageADMIN()
+    public void DeSerializeRestartControlMessageAdmin()
     {
         //Arrange
         const string json =
@@ -164,7 +125,7 @@ public class DerivedTypesTests
     }
 
     [TestMethod]
-    public void SerializeRestartControlMessageADMIN()
+    public void SerializeRestartControlMessageAdmin()
     {
         //Arrange
         var data = new RestartControlMessage();

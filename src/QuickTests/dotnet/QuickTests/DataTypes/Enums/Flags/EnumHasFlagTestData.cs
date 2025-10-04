@@ -7,7 +7,7 @@ public abstract class EnumHasFlagTestData<T> : Attribute, ITestDataSource where 
 {
     public IEnumerable<object?[]> GetData(MethodInfo methodInfo) => GetTestData().Select(TupleExtensions.ToObjectArray);
 
-    public abstract IEnumerable<(T Value, T FlagToCheck, bool ExpectedResult)> GetTestData();
+    protected abstract IEnumerable<(T Value, T FlagToCheck, bool ExpectedResult)> GetTestData();
 
     public string? GetDisplayName(MethodInfo methodInfo, object?[]? data)
     {

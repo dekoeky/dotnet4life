@@ -20,7 +20,7 @@ public class MyDependency : CreatedAt, IMyDependency
         Content = content;
     }
 
-    public string Content { get; init; }
+    public string Content { get; }
 
     public int InstanceId { get; }
     public bool ParameterlessConstructorUsed { get; }

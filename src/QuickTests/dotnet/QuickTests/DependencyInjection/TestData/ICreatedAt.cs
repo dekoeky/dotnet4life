@@ -1,4 +1,5 @@
-﻿namespace QuickTests.DependencyInjection.TestData;
+﻿#pragma warning disable IDE0051
+namespace QuickTests.DependencyInjection.TestData;
 
 public interface ICreatedAt
 {

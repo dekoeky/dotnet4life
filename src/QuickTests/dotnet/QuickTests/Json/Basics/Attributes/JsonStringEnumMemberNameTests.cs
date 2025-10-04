@@ -34,7 +34,8 @@ public class JsonStringEnumMemberNameTests
     [JsonConverter(typeof(JsonStringEnumConverter))]
     //OR
     //[JsonConverter(typeof(JsonStringEnumConverter<IoType>))]
-    public enum IoType
+    //TODO: Perf Test?
+    private enum IoType
     {
         [JsonStringEnumMemberName("di")]
         DigitalInput,

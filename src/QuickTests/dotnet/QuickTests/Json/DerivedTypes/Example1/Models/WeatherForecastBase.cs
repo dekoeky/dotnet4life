@@ -6,7 +6,7 @@ namespace QuickTests.Json.DerivedTypes.Example1.Models;
 [JsonDerivedType(typeof(WeatherForecastWithCity), typeDiscriminator: "withCity")]
 public class WeatherForecastBase
 {
-    public DateTimeOffset Date { get; set; }
-    public int TemperatureCelsius { get; set; }
-    public string? Summary { get; set; }
+    public DateTimeOffset Date { get; init; }
+    public int TemperatureCelsius { get; init; }
+    public string? Summary { get; init; }
 }

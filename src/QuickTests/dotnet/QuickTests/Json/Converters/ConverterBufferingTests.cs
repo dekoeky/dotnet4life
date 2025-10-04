@@ -15,8 +15,8 @@ public class ConverterBufferingTests
         var jsonSerializerOptions = JsonSerializerOptions.Default;
 
         //Act
-        var json1 = JsonSerializer.Serialize(data1, jsonSerializerOptions);
-        var json2 = JsonSerializer.Serialize(data2, jsonSerializerOptions);
+        _ = JsonSerializer.Serialize(data1, jsonSerializerOptions);
+        _ = JsonSerializer.Serialize(data2, jsonSerializerOptions);
 
         //Assert
         Assert.AreEqual(1, MyConverter.CtorCount);

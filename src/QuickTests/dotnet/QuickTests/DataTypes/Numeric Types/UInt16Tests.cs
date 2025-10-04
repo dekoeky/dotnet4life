@@ -25,7 +25,7 @@ public class UInt16Tests : NumericTestsBase<ushort>
         Console.WriteLine("Binary:");
         Console.WriteLine($"  Bits:                {bitString}");
         Console.WriteLine($"  Hex:                 {hex}");
-        Console.WriteLine($"  Bytes:");
+        Console.WriteLine("  Bytes:");
         Console.WriteLine($"    [0]:               {bytes[0],-3} ({label0})");
         Console.WriteLine($"    [1]:               {bytes[1],-3} ({label1})");
         Console.WriteLine();

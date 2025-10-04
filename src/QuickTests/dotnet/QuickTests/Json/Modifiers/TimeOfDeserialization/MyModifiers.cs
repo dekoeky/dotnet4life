@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization.Metadata;
 
 namespace QuickTests.Json.Modifiers.TimeOfDeserialization;
 
+[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 public static class MyModifiers
 {
     public static void ApplyDeserializationTime<TInstance>(JsonTypeInfo info, Action<TInstance, DateTime> propertySetter)

@@ -2,7 +2,7 @@ namespace QuickTests.DataTypes.Enums.Flags;
 
 public class PermissionsHasFlagTestData : EnumHasFlagTestData<Permissions>
 {
-    public override IEnumerable<(Permissions Value, Permissions FlagToCheck, bool ExpectedResult)> GetTestData()
+    protected override IEnumerable<(Permissions Value, Permissions FlagToCheck, bool ExpectedResult)> GetTestData()
     {
         // If permissions is NONE, we expect none of the flags to be set
         yield return (Permissions.None, Permissions.Read, false);

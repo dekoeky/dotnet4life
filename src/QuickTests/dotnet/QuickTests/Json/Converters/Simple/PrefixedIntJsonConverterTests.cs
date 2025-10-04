@@ -80,7 +80,7 @@ public class PrefixedIntJsonConverterTests
         Console.WriteLine(data.Number);
     }
 
-    //has jsonconverter defined by Attribute
+    //Has a JsonConverter defined by Attribute
     private class DataWithAttribute
     {
         [JsonConverter(typeof(PrefixedIntJsonConverter))]
