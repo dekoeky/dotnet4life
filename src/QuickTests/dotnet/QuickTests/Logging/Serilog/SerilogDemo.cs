@@ -56,6 +56,7 @@ public class SerilogDemo
 
     }
 
-    class MyMqttClient;
-    class MyHttpClient;
+    private class MyMqttClient;
+
+    private class MyHttpClient;
 }

@@ -15,9 +15,9 @@ public class EnumBaseTypeTest
     public void CastToInt()
     {
         //Act
-        int i1 = (int)ByteEnum.A;
-        int i2 = (int)IntEnum.A;
-        int i3 = (int)LongEnum.A;
+        var i1 = (int)ByteEnum.A;
+        var i2 = (int)IntEnum.A;
+        var i3 = (int)LongEnum.A;
 
         //Assert
         Assert.AreEqual(1, i1);

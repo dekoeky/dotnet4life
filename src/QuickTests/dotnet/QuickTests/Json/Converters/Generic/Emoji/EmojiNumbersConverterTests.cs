@@ -40,7 +40,7 @@ public class EmojiNumbersConverterTests
         Assert.AreEqual(12345u, data.Number);
     }
 
-    class MyData<T> where T : struct
+    private class MyData<T> where T : struct
     {
         [JsonConverter(typeof(EmojiNumbersConverterFactory))]
         public T Number { get; init; }

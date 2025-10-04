@@ -9,7 +9,7 @@ namespace QuickTests.Json.DerivedTypes.Example1;
 [TestClass]
 public class DerivedTypesTests
 {
-    JsonSerializerOptions jsonSerializerOptions = new()
+    private readonly JsonSerializerOptions jsonSerializerOptions = new()
     {
         WriteIndented = true,
     };

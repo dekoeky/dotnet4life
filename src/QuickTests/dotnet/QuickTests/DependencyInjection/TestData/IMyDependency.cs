@@ -2,5 +2,5 @@
 
 public interface IMyDependency : ICreatedAt
 {
-    public string Content { get; }
+    string Content { get; }
 }

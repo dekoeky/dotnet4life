@@ -112,7 +112,7 @@ public class PrefixedIntJsonConverterTests
             if (!s.StartsWith(prefix)) throw new InvalidOperationException("Can't read this number :(");
 
             //Cut away the prefix
-            s = s[(prefix.Length)..];
+            s = s[prefix.Length..];
 
             //parse the resulting value as int
             return int.Parse(s);

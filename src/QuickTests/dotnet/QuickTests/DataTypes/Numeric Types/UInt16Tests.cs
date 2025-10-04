@@ -33,12 +33,12 @@ public class UInt16Tests : NumericTestsBase<ushort>
 
         // Loop 16 bits (0..15)
         uint u = value;
-        for (int i = 0; i < 16; i++)
+        for (var i = 0; i < 16; i++)
         {
-            uint mask = 1u << i;
-            bool isSet = (u & mask) != 0;
-            char bit = isSet ? '1' : '0';
-            uint contrib = isSet ? mask : 0u;
+            var mask = 1u << i;
+            var isSet = (u & mask) != 0;
+            var bit = isSet ? '1' : '0';
+            var contrib = isSet ? mask : 0u;
             Console.WriteLine($"  Bit [{i:D2}] = {bit} x {mask,5} = {contrib,5}");
         }
     }

@@ -29,7 +29,7 @@ public class OverridableIoActualValueComparerTestDataAttribute : Attribute, ITes
         ];
         yield return
         [
-            false, //Not Equal because not same actual value, despite same finalvalue
+            false, //Not Equal because not same actual value, despite same FinalValue
             new OverridableIo<int> { ActualValue = 1, OverrideValue = 3, IsOverriden = true },
             new OverridableIo<int> { ActualValue = 5, OverrideValue = 3, IsOverriden = true }
         ];

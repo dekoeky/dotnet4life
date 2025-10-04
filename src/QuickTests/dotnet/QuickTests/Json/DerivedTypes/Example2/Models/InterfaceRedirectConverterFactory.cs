@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace QuickTests.Json.DerivedTypes.Example2.Models;
 
-class InterfaceRedirectConverterFactory<T, TBase>
+internal class InterfaceRedirectConverterFactory<T, TBase>
     : JsonConverterFactory
     where T : TBase
 {

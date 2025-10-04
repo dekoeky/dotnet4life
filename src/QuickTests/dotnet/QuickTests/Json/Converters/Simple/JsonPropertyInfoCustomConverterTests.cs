@@ -132,22 +132,24 @@ public class JsonPropertyInfoCustomConverterTests
         Test(data, options);
     }
 
-    class SimplePoco
+    private class SimplePoco
     {
         public MyEnum Value { get; set; }
     }
-    class SimplePocoWithAttributeOnProperty
-    {
-        [JsonConverter(typeof(AlsText<MyEnum>))]
-        public MyEnum Value { get; set; }
-    }
-    class SimplePocoWithFactoryAttributeOnProperty
+
+    private class SimplePocoWithAttributeOnProperty
     {
         [JsonConverter(typeof(AlsText<MyEnum>))]
         public MyEnum Value { get; set; }
     }
 
-    class MyEnumJsonConverterFactory : JsonConverterFactory
+    private class SimplePocoWithFactoryAttributeOnProperty
+    {
+        [JsonConverter(typeof(AlsText<MyEnum>))]
+        public MyEnum Value { get; set; }
+    }
+
+    private class MyEnumJsonConverterFactory : JsonConverterFactory
     {
         public override bool CanConvert(Type typeToConvert)
         {
@@ -159,7 +161,8 @@ public class JsonPropertyInfoCustomConverterTests
             return new AlsText<MyEnum>();
         }
     }
-    class AlsText<T> : JsonConverter<T> where T : Enum
+
+    private class AlsText<T> : JsonConverter<T> where T : Enum
     {
         public override T? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -172,7 +175,7 @@ public class JsonPropertyInfoCustomConverterTests
         }
     }
 
-    enum MyEnum
+    private enum MyEnum
     {
         A,
         B,
@@ -180,7 +183,7 @@ public class JsonPropertyInfoCustomConverterTests
     }
 
     [JsonConverter(typeof(AlsText<MyEnumWithAttribute>))]
-    enum MyEnumWithAttribute
+    private enum MyEnumWithAttribute
     {
         A,
         B,

@@ -122,7 +122,7 @@ public class FloatTests : NumericTestsBase<float>
         var bitString = Convert.ToString(bits, 2).PadLeft(32, '0');
 
         // Extract sign (bit 31, leftmost bit)
-        var sign = (bits >> 31) == 0 ? 1 : -1;
+        var sign = bits >> 31 == 0 ? 1 : -1;
 
         // Extract exponent (bits 23-30)
         var exponent = (int)((bits >> 23) & 0b11111111);
