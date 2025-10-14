@@ -1,31 +1,41 @@
-﻿using System.Text.Json;
+﻿namespace QuickTests.OperatingSystem;
 
-namespace QuickTests.OperatingSystem;
-
+/// <summary>
+/// <see cref="OperatingSystem"/> related tests.
+/// </summary>
 [TestClass]
 public class OperatingSystemTests
 {
-    private static readonly JsonSerializerOptions JsonSerializerOptions = new()
-    {
-        WriteIndented = true,
-    };
-
-    [TestMethod]
+    [TestMethod("Print the Current Operating System Details")]
     public void PrintCurrentOsDetails()
     {
-        //ARRANGE
-        var info = new
-        {
-            OS = Environment.OSVersion.Platform.ToString(),
-            Environment.OSVersion.ServicePack,
-            Environment.OSVersion.VersionString,
-            OperatingSystemBits = Environment.Is64BitOperatingSystem ? "64-Bit" : "32-Bit",
-        };
-
         //ACT
-        var json = JsonSerializer.Serialize(info, JsonSerializerOptions);
+        var os = Environment.OSVersion;
 
         //ASSERT
-        Console.WriteLine(json);
+        Console.WriteLine($"Platform:                           {os.Platform}");
+        Console.WriteLine($"ServicePack:                        {os.ServicePack}");
+        Console.WriteLine($"ServicePack:                        {os.Version}");
+        Console.WriteLine($"ServicePack:                        {os.VersionString}");
+        Console.WriteLine($"Environment.Is64BitOperatingSystem: {Environment.Is64BitOperatingSystem}");
+    }
+
+    [TestMethod]
+    [DataRow("Browser")]
+    [DataRow("Linux")]
+    [DataRow("FreeBSD")]
+    [DataRow("Android")]
+    [DataRow("iOS")]
+    [DataRow("macOS")]
+    [DataRow("tvOS")]
+    [DataRow("watchOS")]
+    [DataRow("Windows")]
+    public void IsOSPlatform(string platform)
+    {
+        //ACT
+        var result = System.OperatingSystem.IsOSPlatform(platform);
+
+        //ASSERT
+        Console.WriteLine($"System.OperatingSystem.IsOSPlatform({platform}): {result}");
     }
 }
