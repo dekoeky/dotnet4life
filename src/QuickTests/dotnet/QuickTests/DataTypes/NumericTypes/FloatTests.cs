@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
-namespace QuickTests.DataTypes.Numeric_Types;
+namespace QuickTests.DataTypes.NumericTypes;
 
 /// <summary>
 /// <see cref="float"/> related tests.

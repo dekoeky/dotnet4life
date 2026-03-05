@@ -1,4 +1,6 @@
-﻿namespace QuickTests.DataTypes.Numeric_Types;
+﻿using SharedLibrary.DataTypes.NumericTypes;
+
+namespace QuickTests.DataTypes.NumericTypes;
 
 [TestClass]
 public class GenericMathTests

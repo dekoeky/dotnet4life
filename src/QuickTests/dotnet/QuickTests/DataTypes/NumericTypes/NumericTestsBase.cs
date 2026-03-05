@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace QuickTests.DataTypes.Numeric_Types;
+namespace QuickTests.DataTypes.NumericTypes;
 
 [TestClass]
 public abstract class NumericTestsBase<T>

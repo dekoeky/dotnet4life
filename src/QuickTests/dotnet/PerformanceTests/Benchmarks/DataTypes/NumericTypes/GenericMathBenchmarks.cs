@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
-using QuickTests.DataTypes.Numeric_Types;
+using SharedLibrary.DataTypes.NumericTypes;
 using System.ComponentModel;
 
 namespace PerformanceTests.Benchmarks.DataTypes.NumericTypes;

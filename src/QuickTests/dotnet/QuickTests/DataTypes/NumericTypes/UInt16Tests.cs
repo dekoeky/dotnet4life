@@ -1,4 +1,4 @@
-﻿namespace QuickTests.DataTypes.Numeric_Types;
+﻿namespace QuickTests.DataTypes.NumericTypes;
 
 [TestClass]
 public class UInt16Tests : NumericTestsBase<ushort>

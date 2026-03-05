@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace QuickTests.DataTypes.Numeric_Types;
+namespace SharedLibrary.DataTypes.NumericTypes;
 
 public static class GenericMathTestMethodsOptimized<T>
         where T : INumber<T>, IFloatingPointConstants<T>

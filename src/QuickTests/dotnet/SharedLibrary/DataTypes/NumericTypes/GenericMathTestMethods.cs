@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace QuickTests.DataTypes.Numeric_Types;
+namespace SharedLibrary.DataTypes.NumericTypes;
 
 /// <summary>
 /// Demonstrates the differences between regular and generic math functions.
