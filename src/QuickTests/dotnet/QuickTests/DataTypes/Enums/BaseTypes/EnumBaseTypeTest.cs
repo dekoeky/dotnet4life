@@ -50,7 +50,7 @@ public class EnumBaseTypeTest
         Assert.AreEqual(LongEnum.A, e3);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(typeof(ByteEnum))]
     [DataRow(typeof(IntEnum))]
     [DataRow(typeof(LongEnum))]

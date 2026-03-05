@@ -6,7 +6,7 @@ namespace QuickTests.Json.Basics.Options;
 [TestClass]
 public class JsonSerializerOptionsTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DynamicData(nameof(OptionsToTest))]
     public void DefaultOptions(string optionsName, JsonSerializerOptions? jsonSerializerOptions)
     {

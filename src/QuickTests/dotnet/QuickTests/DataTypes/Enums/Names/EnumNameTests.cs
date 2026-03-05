@@ -3,18 +3,18 @@
 [TestClass]
 public class EnumNameTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(MyEnum.None, MyEnum.Empty)]
     [DataRow(MyEnum.A, MyEnum.ValueA)]
     [DataRow(MyEnum.B, MyEnum.ValueB)]
     [DataRow(MyEnum.C, MyEnum.ValueC)]
     public void AreEqual(MyEnum a, MyEnum b) => Assert.AreEqual(a, b);
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(MyEnum.ValueA, MyEnum.Valuea)]
     public void AreNotEqual(MyEnum a, MyEnum b) => Assert.AreNotEqual(a, b);
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(nameof(MyEnum.None), MyEnum.None)]
     [DataRow(nameof(MyEnum.Empty), MyEnum.None)]
     [DataRow(nameof(MyEnum.ValueA), MyEnum.ValueA)]

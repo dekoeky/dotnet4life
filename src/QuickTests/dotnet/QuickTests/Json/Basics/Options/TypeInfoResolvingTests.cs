@@ -7,7 +7,7 @@ namespace QuickTests.Json.Basics.Options;
 [TestClass]
 public class TypeInfoResolvingTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DynamicData(nameof(GetOptions))]
     public void ResolveTypeInfoFromOptions(bool expectedToBeResolvable, JsonSerializerOptions options)
     {

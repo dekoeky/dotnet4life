@@ -11,7 +11,7 @@ namespace QuickTests.Reflection.StaticGeneric;
 [TestClass]
 public class GenericInterfaceStaticMethodsViaReflectionTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(typeof(TimesTwo))]
     [DataRow(typeof(TimesThree))]
     public void PrintReflectionInfo(Type type)
@@ -26,7 +26,7 @@ public class GenericInterfaceStaticMethodsViaReflectionTests
         w.WriteHeaderWithItems("Interfaces:", type.GetInterfaces().Select(i => $"{i.GetFriendlyTypeName()}"));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(typeof(TimesTwo))]
     [DataRow(typeof(TimesThree))]
     public void PrintImplementation(Type type)
@@ -55,7 +55,7 @@ public class GenericInterfaceStaticMethodsViaReflectionTests
     /// <param name="value"></param>
     /// <param name="expectedResult"></param>
     /// <exception cref="InvalidOperationException"></exception>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(typeof(TimesTwo), 5, 10)]
     [DataRow(typeof(TimesThree), 5, 15)]
     public void CallInterfaceMethodOnImplementingClass(Type type, double value, double expectedResult)

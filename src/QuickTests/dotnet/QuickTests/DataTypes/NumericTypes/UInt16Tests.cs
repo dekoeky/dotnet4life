@@ -3,7 +3,7 @@
 [TestClass]
 public class UInt16Tests : NumericTestsBase<ushort>
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow((ushort)0u)]
     [DataRow((ushort)1u)]
     [DataRow((ushort)11u)]

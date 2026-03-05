@@ -41,7 +41,7 @@ public class DateTimeTests
         static string ToDebugString(DateTime dt) => $"{dt} [{dt.Kind}]";
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("Europe/Brussels", "2025-03-30T02:30:00", true)]
     [DataRow("Europe/Brussels", "2025-03-30T01:30:00", false)]
     [DataRow("Europe/Brussels", "2025-03-30T03:30:00", false)]
@@ -72,7 +72,7 @@ public class DateTimeTests
         Assert.AreEqual(expectedInvalid, invalid);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("Europe/Brussels")]
     public void Explain(string tz)
     {

@@ -3,7 +3,7 @@
 [TestClass]
 public class StringComparerTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("aaa", "AAA", false)]
     [DataRow("aaa", "aaa", true)]
     public void CurrentCulture(string a, string b, bool expected)
@@ -18,7 +18,7 @@ public class StringComparerTests
         Assert.AreEqual(expected, result);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("aaa", "AAA", true)]
     [DataRow("aaa", "aaa", true)]
     public void CurrentCultureIgnoreCase(string a, string b, bool expected)

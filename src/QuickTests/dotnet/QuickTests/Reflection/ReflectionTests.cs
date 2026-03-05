@@ -6,7 +6,7 @@ namespace QuickTests.Reflection;
 [TestClass]
 public class ReflectionTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(typeof(Poco))]
     public void PrintProperties(Type type)
     {

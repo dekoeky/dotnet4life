@@ -7,7 +7,7 @@ namespace QuickTests.Json.Basics.Options;
 [TestClass]
 public class Defaults
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(JsonSerializerDefaults.General)]
     [DataRow(JsonSerializerDefaults.Web)]
     [DataRow(null)]

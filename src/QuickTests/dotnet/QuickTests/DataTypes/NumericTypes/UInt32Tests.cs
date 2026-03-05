@@ -6,7 +6,7 @@
 [TestClass]
 public class UInt32Tests : NumericTestsBase<uint>
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(0u)]
     [DataRow(1u)]
     [DataRow(11u)]

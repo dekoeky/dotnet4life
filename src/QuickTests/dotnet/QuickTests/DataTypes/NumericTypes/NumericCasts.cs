@@ -3,7 +3,7 @@ namespace QuickTests.DataTypes.NumericTypes;
 [TestClass]
 public class NumericCasts
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(ushort.MinValue)]
     [DataRow(ushort.MaxValue)]
     [DataRow((ushort)5)]

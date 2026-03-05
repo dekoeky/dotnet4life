@@ -10,7 +10,7 @@ public class DateTimeTests
         WriteIndented = true,
     };
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(typeof(DateTime))]
     [DataRow(typeof(byte[]))]
     public void GetConverter(Type type)
@@ -26,7 +26,7 @@ public class DateTimeTests
         //System.Text.Json.Serialization.Converters.DateTimeConverter
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("2024-12-10T15:00:00", DateTimeKind.Unspecified)]
     [DataRow("2024-12-10T14:00:00Z", DateTimeKind.Utc)]
     [DataRow("2024-12-10T15:00:00+01:00", DateTimeKind.Local)]
@@ -45,7 +45,7 @@ public class DateTimeTests
         Assert.IsTrue(result < new DateTime(2024, 12, 11));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("2024-12-10T15:00:00", DateTimeKind.Unspecified)]
     [DataRow("2024-12-10T14:00:00Z", DateTimeKind.Utc)]
     [DataRow("2024-12-10T15:00:00+01:00", DateTimeKind.Local)]

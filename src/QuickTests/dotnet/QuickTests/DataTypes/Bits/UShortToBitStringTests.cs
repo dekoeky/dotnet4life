@@ -6,7 +6,7 @@
 [TestClass]
 public class UShortToBitStringTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DynamicData(nameof(TestData))]
     public void Convert_ToString(ushort value, string expectedBitString)
     {
@@ -19,7 +19,7 @@ public class UShortToBitStringTests
     }
 
 #if NET8_0_OR_GREATER
-    [DataTestMethod]
+    [TestMethod]
     [DynamicData(nameof(TestData))]
     public void ToString_B(ushort value, string expectedBitString)
     {
@@ -31,7 +31,7 @@ public class UShortToBitStringTests
         Assert.IsTrue(expectedBitString.EndsWith(bitString));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DynamicData(nameof(TestData))]
     public void ToString_b8(ushort value, string expectedBitString)
     {
@@ -43,7 +43,7 @@ public class UShortToBitStringTests
         Assert.IsTrue(expectedBitString.EndsWith(bitString));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DynamicData(nameof(TestData))]
     public void ToString_b16(ushort value, string expectedBitString)
     {

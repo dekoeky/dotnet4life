@@ -7,7 +7,7 @@
 [TestClass]
 public class DoubleTests : NumericTestsBase<double>
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(+0.0001)]
     [DataRow(-0.0001)]
     [DataRow(+240.0)]

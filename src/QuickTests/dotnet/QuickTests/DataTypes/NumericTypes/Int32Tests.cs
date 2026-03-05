@@ -13,7 +13,7 @@ public class Int32Tests : NumericTestsBase<int>
     /// </summary>
     private const uint SignMask = 0b10000000_00000000_00000000_00000000; //MSB or Leftmost bit
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(int.MinValue)]
     [DataRow(-256)]
     [DataRow(-255)]

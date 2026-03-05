@@ -19,7 +19,7 @@ public class OverridableIoFinalValueComparerTests
         Assert.AreEqual(typeof(OverridableFinalValueComparer<int>), Comparer.GetType());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [OverridableIoFinalValueComparerTestData]
     public void Compare(bool expectedEqual, OverridableIo<int> a, OverridableIo<int> b)
     {

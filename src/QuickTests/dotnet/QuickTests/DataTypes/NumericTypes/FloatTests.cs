@@ -106,7 +106,7 @@ public class FloatTests : NumericTestsBase<float>
         Console.WriteLine($"R       {wasRoundTrippableR}");
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(+MathF.PI)]
     [DataRow(-MathF.PI)]
     [DataRow(float.MaxValue)]

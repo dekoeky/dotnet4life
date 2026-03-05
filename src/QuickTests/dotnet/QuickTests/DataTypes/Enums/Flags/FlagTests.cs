@@ -14,7 +14,7 @@ public class FlagTests
         Assert.AreEqual(Permissions.None, value);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [TestForAllEnumValues]
     public void HasFlagForZeroFlag_Always_True(Permissions value)
     {
@@ -25,7 +25,7 @@ public class FlagTests
         Assert.IsTrue(result);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [PermissionsHasFlagTestData]
     public void IsFlagSet_New(Permissions value, Permissions flagToCheck, bool expectedResult)
     {
@@ -41,7 +41,7 @@ public class FlagTests
         Assert.AreEqual(expectedResult, result);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [PermissionsHasFlagTestData]
     public void IsFlagSet_Old(Permissions value, Permissions flagToCheck, bool expectedResult)
     {
