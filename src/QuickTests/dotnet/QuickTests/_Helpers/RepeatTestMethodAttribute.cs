@@ -15,12 +15,12 @@ public sealed class RepeatTestMethodAttribute : TestMethodAttribute
         _repeatCount = repeatCount;
     }
 
-    public override TestResult[] Execute(ITestMethod testMethod)
+    public override async Task<TestResult[]> ExecuteAsync(ITestMethod testMethod)
     {
         var results = new TestResult[_repeatCount];
         for (var i = 0; i < _repeatCount; i++)
         {
-            var result = base.Execute(testMethod);
+            var result = await base.ExecuteAsync(testMethod);
             results[i] = result[0];
             // you can annotate results[i].DisplayName here if you want to see run #N
             //results[i].DisplayName = $"{testMethod.TestClassName}.{testMethod.TestMethodName} (run {i + 1})";
