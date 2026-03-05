@@ -29,7 +29,6 @@ public class CheckedVsUncheckedByteTests
 
     [TestMethod]
     [TestProperty("context", "checked")]
-    [DataRow((ushort)255)]
     [DataRow((ushort)256)]
     [DataRow((ushort)257)]
     [DataRow((ushort)(69 + 256))]
