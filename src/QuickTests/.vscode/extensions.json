@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csdevkit",
+        "editorconfig.editorconfig",
+        "mhutchie.git-graph",
+        "davidanson.vscode-markdownlint"
+    ]
+}
