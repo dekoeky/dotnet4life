@@ -10,8 +10,8 @@ public class LockTests
     {
         Debug.WriteLine($"Unit test starting on thread {Environment.CurrentManagedThreadId}");
         //Arrange
-        var task1 = Task.Run(() => LockableMethod(TimeSpan.FromSeconds(2), "Task 1"));
-        var task2 = Task.Run(() => LockableMethod(TimeSpan.FromSeconds(2), "Task 2"));
+        var task1 = Task.Run(() => LockableMethod(TimeSpan.FromSeconds(2), "Task 1"), TestContext.CancellationToken);
+        var task2 = Task.Run(() => LockableMethod(TimeSpan.FromSeconds(2), "Task 2"), TestContext.CancellationToken);
 
         var tasks = new[] { task1, task2 };
 
@@ -45,4 +45,6 @@ public class LockTests
 
         Debug.WriteLine($"{DateTime.Now.TimeOfDay} {taskName} finished method, on thread {Environment.CurrentManagedThreadId}");
     }
+
+    public TestContext TestContext { get; set; }
 }

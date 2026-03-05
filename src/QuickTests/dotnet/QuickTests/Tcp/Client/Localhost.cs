@@ -25,7 +25,7 @@ public class Localhost
         //ACT
         using var client = new TcpClient();
         var sw = Stopwatch.StartNew();
-        await client.ConnectAsync(host, Port);
+        await client.ConnectAsync(host, Port, TestContext.CancellationToken);
 
         //ASSERT
         Console.WriteLine($"{host}: {sw.Elapsed}");
@@ -43,9 +43,11 @@ public class Localhost
         //ACT
         using var client = new TcpClient();
         var sw = Stopwatch.StartNew();
-        await client.ConnectAsync(host, Port);
+        await client.ConnectAsync(host, Port, TestContext.CancellationToken);
 
         //ASSERT
         Console.WriteLine($"{host}: {sw.Elapsed}");
     }
+
+    public TestContext TestContext { get; set; }
 }
