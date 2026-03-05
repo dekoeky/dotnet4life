@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using QuickTests._Helpers.TestExtensions;
 using QuickTests.DependencyInjection.TestData;
 
 namespace QuickTests.DependencyInjection;
