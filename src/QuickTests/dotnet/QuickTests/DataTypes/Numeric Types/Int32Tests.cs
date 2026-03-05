@@ -82,4 +82,17 @@ public class Int32Tests : NumericTestsBase<int>
             Console.WriteLine($"    Bit [{thisBitIndex:D2}] = {thisBitChar} x {thisBitValue,10} = {thisResult,10}");
         }
     }
+
+    /// <summary>
+    /// Demonstrates the binary (32-bit) formatter
+    /// </summary>
+    /// <seealso cref="UInt32Tests.BinaryFormatter"/>
+    [TestMethod]
+    [DataRow(2147483647)]
+    [DataRow(2147483646)]
+    public void BinaryFormatter(int value)
+    {
+        // Act
+        Console.WriteLine($"{value,10}: {value:b32}");
+    }
 }

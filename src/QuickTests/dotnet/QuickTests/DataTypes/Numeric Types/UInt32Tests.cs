@@ -55,4 +55,17 @@ public class UInt32Tests : NumericTestsBase<uint>
             Console.WriteLine($"  Bit [{thisBitIndex:D2}] = {thisBitChar} x {thisBitValue,10} = {thisResult,10}");
         }
     }
+
+    /// <summary>
+    /// Demonstrates the binary (32-bit) formatter
+    /// </summary>
+    /// <seealso cref="Int32Tests.BinaryFormatter"/>
+    [TestMethod]
+    [DataRow(2147483647u)]
+    [DataRow(2147483646u)]
+    public void BinaryFormatter(uint value)
+    {
+        // Act
+        Console.WriteLine($"{value,10}: {value:b32}");
+    }
 }
