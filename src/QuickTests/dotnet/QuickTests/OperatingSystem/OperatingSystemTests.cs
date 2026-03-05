@@ -6,7 +6,7 @@
 [TestClass]
 public class OperatingSystemTests
 {
-    [TestMethod("Print the Current Operating System Details")]
+    [TestMethod(DisplayName = "Print the Current Operating System Details")]
     public void PrintCurrentOsDetails()
     {
         //ACT

@@ -10,7 +10,7 @@ namespace QuickTests.DataTypes.NumericTypes;
 [TestClass]
 public class LiteralSuffixes
 {
-    [TestMethod("Literal Suffix")]
+    [TestMethod(DisplayName = "Literal Suffix")]
     [DataRow("10", 10, typeof(int))]
     [DataRow("10u", 10u, typeof(uint))]
     [DataRow("10U", 10U, typeof(uint))]
