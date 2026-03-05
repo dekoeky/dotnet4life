@@ -38,7 +38,7 @@ public class TimeOfDeserializationTests
 
         //Assert
         Assert.IsNotNull(data);
-        Assert.That.IsBetween(start, stop, data.MyTime, true);
+        Assert.IsInRange(start, stop, data.MyTime);
         Console.WriteLine($"Start Deserialization: {start:O}");
         Console.WriteLine($"{nameof(data.MyTime)} Property, after Deserialization: {data.MyTime:O}");
         Console.WriteLine($"Stop Deserialization: {stop:O}");
