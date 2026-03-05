@@ -1,4 +1,6 @@
-﻿namespace QuickTests._Helpers;
+﻿using System.Runtime.CompilerServices;
+
+namespace QuickTests._Helpers;
 
 /// <summary>
 /// Repeats the annotated test method <see cref="_repeatCount"/> times.
@@ -6,9 +8,12 @@
 [AttributeUsage(AttributeTargets.Method)]
 public sealed class RepeatTestMethodAttribute : TestMethodAttribute
 {
+    // TODO: Fix Duplicate Results?
+
     private readonly int _repeatCount;
 
-    public RepeatTestMethodAttribute(int repeatCount)
+    public RepeatTestMethodAttribute(int repeatCount, [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = -1)
+        : base(callerFilePath, callerLineNumber)
     {
         if (repeatCount < 1)
             throw new ArgumentOutOfRangeException(nameof(repeatCount), "Repeat count must be > 0");
