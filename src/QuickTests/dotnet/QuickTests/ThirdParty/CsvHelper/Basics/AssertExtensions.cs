@@ -6,7 +6,7 @@ internal static class AssertExtensions
     {
         var expected = PersonTestData.IPersons;
 
-        Assert.AreEqual(expected.Length, records.Count);
+        Assert.HasCount(expected.Length, records);
 
         for (var i = 0; i < expected.Length; i++)
         {

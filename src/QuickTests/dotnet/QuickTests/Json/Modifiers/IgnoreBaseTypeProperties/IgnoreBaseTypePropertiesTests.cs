@@ -31,10 +31,10 @@ public class IgnoreBaseTypePropertiesTests
 
         //Assert
         Console.WriteLine(json);
-        Assert.IsFalse(json.Contains("__A__")); //This property is defined in a base class of C (T Ignore) and is expected not to be serialized
-        Assert.IsFalse(json.Contains("__B__")); //This property is defined in a base class of C (T Ignore) and is expected not to be serialized
-        Assert.IsFalse(json.Contains("__C__")); //This property is defined in C (T Ignore) and is expected not to be serialized
-        Assert.IsTrue(json.Contains("__D__"));  //This property is defined in a subclass of C (T Ignore) and is expected to be serialized
-        Assert.IsTrue(json.Contains("__E__"));  //This property is defined in a subclass of C (T Ignore) and is expected to be serialized
+        Assert.DoesNotContain("__A__", json); //This property is defined in a base class of C (T Ignore) and is expected not to be serialized
+        Assert.DoesNotContain("__B__", json); //This property is defined in a base class of C (T Ignore) and is expected not to be serialized
+        Assert.DoesNotContain("__C__", json); //This property is defined in C (T Ignore) and is expected not to be serialized
+        Assert.Contains("__D__", json);  //This property is defined in a subclass of C (T Ignore) and is expected to be serialized
+        Assert.Contains("__E__", json);  //This property is defined in a subclass of C (T Ignore) and is expected to be serialized
     }
 }

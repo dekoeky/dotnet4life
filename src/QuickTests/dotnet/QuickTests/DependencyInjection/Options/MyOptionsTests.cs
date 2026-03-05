@@ -53,8 +53,8 @@ public class MyOptionsTests
         Console.WriteLine(options);
         Assert.AreEqual("192.168.0.1", options.Ip);
         Assert.AreEqual(1234, options.Port);
-        Assert.IsTrue(MyOptionsPostConfigure.CallCount > 0, $"{nameof(MyOptionsPostConfigure)}.{nameof(MyOptionsPostConfigure.PostConfigure)} was not called");
-        Assert.IsTrue(MyOptionsPostConfigure.CallCount > 0, $"{nameof(MyOptionsValidate)}.{nameof(MyOptionsValidate.Validate)} was not called");
+        Assert.IsGreaterThan(0, MyOptionsPostConfigure.CallCount, $"{nameof(MyOptionsPostConfigure)}.{nameof(MyOptionsPostConfigure.PostConfigure)} was not called");
+        Assert.IsGreaterThan(0, MyOptionsPostConfigure.CallCount, $"{nameof(MyOptionsValidate)}.{nameof(MyOptionsValidate.Validate)} was not called");
     }
 
     [TestMethod]
@@ -82,8 +82,8 @@ public class MyOptionsTests
         Console.WriteLine(options);
         Assert.AreEqual("192.168.0.1", options.Ip);
         Assert.AreEqual(1234, options.Port);
-        Assert.IsTrue(MyOptionsPostConfigure.CallCount > 0, $"{nameof(MyOptionsPostConfigure)}.{nameof(MyOptionsPostConfigure.PostConfigure)} was not called");
-        Assert.IsTrue(MyOptionsPostConfigure.CallCount > 0, $"{nameof(MyOptionsValidate)}.{nameof(MyOptionsValidate.Validate)} was not called");
+        Assert.IsGreaterThan(0, MyOptionsPostConfigure.CallCount, $"{nameof(MyOptionsPostConfigure)}.{nameof(MyOptionsPostConfigure.PostConfigure)} was not called");
+        Assert.IsGreaterThan(0, MyOptionsPostConfigure.CallCount, $"{nameof(MyOptionsValidate)}.{nameof(MyOptionsValidate.Validate)} was not called");
     }
 }
 

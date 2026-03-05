@@ -28,7 +28,7 @@ public class UShortToBitStringTests
 
         //Assert
         Console.WriteLine($"{value,5} -> {bitString}");
-        Assert.IsTrue(expectedBitString.EndsWith(bitString));
+        Assert.EndsWith(bitString, expectedBitString);
     }
 
     [TestMethod]
@@ -40,7 +40,7 @@ public class UShortToBitStringTests
 
         //Assert
         Console.WriteLine($"{value,5} -> {bitString}");
-        Assert.IsTrue(expectedBitString.EndsWith(bitString));
+        Assert.EndsWith(bitString, expectedBitString);
     }
 
     [TestMethod]

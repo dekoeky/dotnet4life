@@ -35,8 +35,8 @@ public class TimeOfSerializationTests
 
         //Assert
         Console.WriteLine(json);
-        Assert.IsTrue(json.Contains("""
+        Assert.Contains("""
                                     "$TimeOfSerialization":
-                                    """), "The resulting Json does not contain the expected Time Of Serialization");
+                                    """, json, "The resulting Json does not contain the expected Time Of Serialization");
     }
 }

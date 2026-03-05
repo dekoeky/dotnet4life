@@ -41,8 +41,8 @@ public class DateTimeTests
 
         //Assert
         Assert.AreEqual(expected, result.Kind);
-        Assert.IsTrue(result > new DateTime(2024, 12, 10));
-        Assert.IsTrue(result < new DateTime(2024, 12, 11));
+        Assert.IsGreaterThan(new DateTime(2024, 12, 10), result);
+        Assert.IsLessThan(new DateTime(2024, 12, 11), result);
     }
 
     [TestMethod]
@@ -67,8 +67,8 @@ public class DateTimeTests
         var result = dateTimeProperty.GetDateTime();
 
         //Assert
-        Assert.IsTrue(result > new DateTime(2024, 12, 10));
-        Assert.IsTrue(result < new DateTime(2024, 12, 11));
+        Assert.IsGreaterThan(new DateTime(2024, 12, 10), result);
+        Assert.IsLessThan(new DateTime(2024, 12, 11), result);
         Assert.AreEqual(expected, result.Kind);
     }
 

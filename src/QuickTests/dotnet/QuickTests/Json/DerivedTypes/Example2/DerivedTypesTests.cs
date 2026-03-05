@@ -102,7 +102,7 @@ public class DerivedTypesTests
         else
         {
             Assert.AreEqual(32, setBit.Bit);
-            Assert.AreEqual(true, setBit.Value);
+            Assert.IsTrue(setBit.Value);
         }
     }
 

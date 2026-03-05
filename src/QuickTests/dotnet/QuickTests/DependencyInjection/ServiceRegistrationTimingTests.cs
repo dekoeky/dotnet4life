@@ -38,11 +38,11 @@ public class ServiceRegistrationTimingTests
         switch (expectedCreationTime)
         {
             case ExpectedCreationTime.DuringRegistration:
-                Assert.IsFalse(service.CreatedDateTime > registrationFinished, "The service was expected to be created during registration, but was created after registration");
+                Assert.IsLessThanOrEqualTo(registrationFinished, service.CreatedDateTime, "The service was expected to be created during registration, but was created after registration");
                 break;
 
             case ExpectedCreationTime.AfterRegistration:
-                Assert.IsFalse(service.CreatedDateTime < registrationFinished, "The service was expected to be created after registration, but was created during registration");
+                Assert.IsGreaterThanOrEqualTo(registrationFinished, service.CreatedDateTime, "The service was expected to be created after registration, but was created during registration");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(expectedCreationTime), expectedCreationTime, null);
