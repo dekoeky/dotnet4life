@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Engines;
+using SharedLibrary.AsyncEnumerable;
 
 namespace PerformanceTests.Benchmarks.AsyncEnumerable;
 
