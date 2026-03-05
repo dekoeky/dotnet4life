@@ -1,0 +1,3 @@
+﻿# Prevents Git from performing end-of-line normalization on these files
+HelloWorld.crlf.txt text eol=crlf
+HelloWorld.lf.txt text eol=lf

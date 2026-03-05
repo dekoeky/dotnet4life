@@ -1,4 +1,4 @@
-﻿namespace QuickTests.DataTypes.Numeric_Types;
+﻿namespace QuickTests.DataTypes.NumericTypes;
 
 /// <summary>
 /// <see cref="int"/> related tests.
