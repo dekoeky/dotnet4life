@@ -1,4 +1,6 @@
-﻿namespace QuickTests.DataTypes.NumericTypes;
+using System.Diagnostics;
+
+namespace QuickTests.DataTypes.NumericTypes;
 
 /// <summary>
 /// <see cref="int"/> related tests.
@@ -94,5 +96,25 @@ public class Int32Tests : NumericTestsBase<int>
     {
         // Act
         Console.WriteLine($"{value,10}: {value:b32}");
+    }
+
+    [TestMethod]
+    [DataRow(10, 1, 0)]
+    [DataRow(2, 2, 0)]
+    [DataRow(1, 2, 1)]
+    [DataRow(3, 2, 1)]
+    [DataRow(5, 2, 1)]
+    [DataRow(1, 1, 0)]
+    public void MyTestMethod(int a, int b, int expected)
+    {
+        // Arrange
+        const int padding = 10;
+
+        // Act
+        var result = a % b;
+        Debug.WriteLine($"{a,padding} % {b,padding} = {result}");
+
+        // Assert
+        Assert.AreEqual(expected, result);
     }
 }
