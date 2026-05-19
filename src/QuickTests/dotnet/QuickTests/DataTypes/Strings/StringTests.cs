@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace QuickTests.DataTypes.Strings;
 
@@ -10,6 +11,7 @@ public class StringTests
     [DataRow("Hello World", false)]
     [DataRow("", true)]
     [DataRow("  ", false)]
+    [DataRow("\t", false)]
     [DataRow("\r", false)]
     [DataRow("\n", false)]
     [DataRow("\r\n", false)]
@@ -31,6 +33,7 @@ public class StringTests
     [DataRow("Hello World", false)]
     [DataRow("", true)]
     [DataRow("  ", true)]
+    [DataRow("\t", true)]
     [DataRow("\r", true)]
     [DataRow("\n", true)]
     [DataRow("\r\n", true)]
@@ -45,5 +48,31 @@ public class StringTests
 
         // ---------- ASSERT -----------
         Debug.WriteLine($"String {printableString,20}: Null Or WhiteSpace: {nullOrEmpty}");
+    }
+
+    [TestMethod]
+    [SuppressMessage("ReSharper", "ConvertToConstant.Local", Justification = "For clarity")]
+    public void StringInterning()
+    {
+        // Arrange
+        var a = "hello";
+        var b = "hello"; // This will NOT be a new reference/instance, due to string interning
+
+        // Assert
+        Assert.AreEqual(a, b);
+        Assert.AreSame(a, b);
+    }
+
+    [TestMethod]
+    [SuppressMessage("ReSharper", "ConvertToConstant.Local", Justification = "For clarity")]
+    public void StringInterningWorkAround()
+    {
+        // Arrange
+        var a = "hello";
+        var b = new string("hello"); // Force new string (new reference), with same value
+
+        // Assert
+        Assert.AreEqual(a, b);
+        Assert.AreNotSame(a, b);
     }
 }
