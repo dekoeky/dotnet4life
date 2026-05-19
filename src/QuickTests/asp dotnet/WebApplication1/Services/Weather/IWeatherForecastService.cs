@@ -1,6 +1,6 @@
-﻿using WebApplication1.Models;
+using WebApplication1.Models;
 
-namespace WebApplication1.Services;
+namespace WebApplication1.Services.Weather;
 
 public interface IWeatherForecastService
 {

@@ -4,31 +4,22 @@ using Scalar.AspNetCore;
 using System.Diagnostics;
 using WebApplication1.Configuration;
 using WebApplication1.Diagnostics;
-
-//// Add services to the container.
-
-//builder.Services.AddOpenApi();
-
-//// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.MapOpenApi();
-//}
+using WebApplication1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers(options =>
-    {
-        options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
-    })
-    .AddJsonOptions(Json.Configure);
+{
+    options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+}).AddJsonOptions(Json.ConfigureForController);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 builder.Services.AddApplicationServices();
 builder.Services.AddApplicationHealthChecks();
-builder.Services.ConfigureHttpJsonOptions(Json.Configure);
+builder.Services.ConfigureHttpJsonOptions(Json.ConfigureForMinimalApi);
+//builder.Services.AddDbContext<MyDb>();
+builder.Services.AddSingleton(Random.Shared);
+builder.Services.AddSingleton<AsyncDataGenerator>();
 
 if (Features.MiddlewareDiagnostics)
     // insert the AnalysisStartupFilter as the first IStartupFilter in the container
@@ -59,12 +50,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
-app.MapControllers();
 app.MapApplicationHealthChecks();
+app.MapControllers();
 app.MapApplicationMinimalApis();
 
 app.Run();
-
 
 //Allows Unit Tests
 namespace WebApplication1

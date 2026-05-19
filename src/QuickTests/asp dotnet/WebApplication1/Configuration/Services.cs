@@ -1,4 +1,4 @@
-using WebApplication1.Services;
+using WebApplication1.Services.Weather;
 
 namespace WebApplication1.Configuration;
 

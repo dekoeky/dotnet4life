@@ -10,7 +10,7 @@ internal static class Json
     /// <summary>
     /// Application specific configuration for Json Serialization on Controllers.
     /// </summary>
-    public static void Configure(Microsoft.AspNetCore.Mvc.JsonOptions options)
+    public static void ConfigureForController(Microsoft.AspNetCore.Mvc.JsonOptions options)
     {
         ConfigureSharedOptions(options.JsonSerializerOptions);
     }
@@ -19,7 +19,7 @@ internal static class Json
     /// <summary>
     /// Application specific configuration for Json Serialization on Minimal Apis.
     /// </summary>
-    public static void Configure(Microsoft.AspNetCore.Http.Json.JsonOptions options)
+    public static void ConfigureForMinimalApi(Microsoft.AspNetCore.Http.Json.JsonOptions options)
     {
         ConfigureSharedOptions(options.SerializerOptions);
 
