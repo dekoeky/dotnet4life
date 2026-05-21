@@ -1,4 +1,4 @@
-﻿
+
 #pragma warning disable CA1822
 // ReSharper disable UseNameOfInsteadOfTypeOf
 // ReSharper disable UseSymbolAlias
@@ -36,6 +36,8 @@ public class NameOfTests
             { "nameof(namespace)",                     nameof(Generics)},
             { "nameof(local method)",                  nameof(SomeLocalMethod) },
             { "nameof(local static method)",           nameof(SomeLocalStaticMethod) },
+            { "nameof(List<int>)",                     nameof(List<int>) },
+            { "nameof(List<>)",                        nameof(List<>) }, // Since C# 14 (.NET 10)
             { "nameof(method parameter)",              NameOfParameter("test") },
             { "nameof(local method parameter)",        NameOfLocalMethodParameter("test") },
             { "nameof(generic method type parameter)", NameOfGenericMethodTypeParameter<int>() },
